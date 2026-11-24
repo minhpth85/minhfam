@@ -156,7 +156,7 @@ footer .socials a:hover{background:var(--on-primary);color:var(--primary);border
   h3{font-size:24px;line-height:30px}
   .lead{font-size:20px;line-height:30px}
   .site-header .container{grid-template-columns:1fr auto;gap:8px}
-  .brand{display:none}
+  .brand{font-size:0;gap:0;padding:8px 0}
   .nav{gap:2px;justify-self:start}
   .nav a{padding:10px 8px;font-size:14px}
 }
