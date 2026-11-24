@@ -4,6 +4,7 @@ ngay: 2026-11-23
 the: [Sống chậm, Sức khỏe tinh thần]
 tom-tat: Chín tháng tạm nghỉ side jobs, và câu chuyện về "năng suất độc hại" mà ai từng mơ làm solobiz chắc cũng đi qua.
 anh-bia: anh/bia.jpg
+phut: 4
 nhap: false
 ---
 

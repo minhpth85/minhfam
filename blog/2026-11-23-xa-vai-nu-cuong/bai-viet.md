@@ -5,6 +5,9 @@ the: [Shadow Work, Viết để chữa lành]
 tom-tat: Câu chuyện đằng sau Shadow Work 7-day Journal, một góc trú ẩn nho nhỏ để mỗi ngày tháo mặt nạ ra và viết thật với chính mình.
 anh-bia: anh/bia.jpg
 link-du-an: https://shadowwork-journal.pages.dev/
+phut: 5
+vi-tri-anh: top
+noi-bat: true
 nhap: false
 ---
 

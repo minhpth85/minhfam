@@ -4,6 +4,7 @@ ngay: 2026-11-23
 the: [Sự nghiệp, Tự soi chiếu]
 tom-tat: Đọc thư của James Clear một buổi sáng, và bốn câu hỏi giúp mình tìm ra công việc đủ vui, đủ nuôi sống mình và đủ giữ mình là chính mình.
 anh-bia: anh/bia.jpg
+phut: 5
 nhap: false
 ---
 

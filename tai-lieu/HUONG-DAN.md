@@ -16,6 +16,7 @@ website-ca-nhan/
 ├── tai-nguyen-chung/ Ảnh đại diện, CV dùng chung
 ├── site/             Website hoàn chỉnh (HTML, CSS, noi-dung.js, anh/) — đây là phần đăng lên
 ├── tai-lieu/         Hướng dẫn và design system (file này nằm ở đây)
+├── scripts/          build.mjs: quét blog/ và du-an/, cập nhật website
 └── luu-tru/          Bản xem trước cũ, không đăng
 ```
 
@@ -42,15 +43,20 @@ website-ca-nhan/
 
 ## Thêm nội dung mới (trang chủ tự cập nhật)
 
-Danh sách sách, bài viết và dự án nằm trong **một file**: `site/noi-dung.js`.
-Trang chủ, Thư viện và Blog đều đọc từ đó, nên chỉ cần thêm **một mục** là cả ba trang tự cập nhật, kể cả số đếm ("3 cuốn · 1 sắp có", "3 bài viết") trên trang chủ.
+### Bài blog và dự án: hoàn toàn tự động
+1. Copy `blog/_mau-bai-viet/` thành `blog/<ngày>-<ten-bai>/`, điền đầu file và nội dung, bỏ ảnh bìa vào `anh/bia.jpg`.
+   (Dự án: copy `du-an/_mau-du-an/` thành `du-an/<ten-du-an>/`.)
+2. Chạy `node scripts/build.mjs`, **hoặc** (khi đã bật GitHub Action, xem `cho-dang/`) push lên GitHub để tự chạy.
+3. Script sẽ: cập nhật danh sách `POSTS` / `PROJECTS_TU_DONG` trong `site/noi-dung.js` (trang chủ, Blog tự đổi theo, kể cả số đếm), chép ảnh bìa sang `site/anh/`, và **tạo trang `site/<ten-bai>.html`** nếu chưa có.
 
-| Muốn thêm | Thêm vào danh sách | Ghi chú |
-|---|---|---|
-| Sách mới | `BOOKS` | Thêm xuống **cuối**. Trang chủ hiện 3 cuốn `doc-ngay` ở cuối. `status:"sap-co"` thì hiện ở dòng "Sắp có". |
-| Bài blog mới | `POSTS` | Điền `ngay` dạng `2026-11-24`. Bài mới nhất tự lên đầu. `noibat:true` cho bài to nhất. |
-| Dự án mới | `PROJECTS` | Trang chủ hiện 2 dự án đầu có `noibat:true`. |
+Các trường tùy chọn ở đầu `bai-viet.md`: `phut` (số phút đọc, mặc định tính theo số chữ), `noi-bat: true` (bài to nhất), `vi-tri-anh: top` (vị trí cắt ảnh), `link-du-an` (link dự án liên quan). `nhap: true` thì chưa đăng.
 
-Mỗi mục chỉ cần copy một dòng có sẵn rồi đổi chữ. Ảnh đặt trong `site/anh/`, ghi đường dẫn dạng `anh/ten-anh.jpg`.
+Lưu ý:
+- Trang HTML đã có thì script **không ghi đè**; muốn dựng lại thì xóa file đó rồi chạy lại.
+- Khối giữa `AUTO:...BEGIN` và `AUTO:...END` trong `noi-dung.js` là tự sinh, đừng sửa tay (sửa ở file `.md`).
+- Bài mới sinh ra theo khuôn `scripts/mau-bai-viet.html`; bài cần bố cục đặc biệt (ô so sánh, CTA...) thì chỉnh tay trong file HTML sau khi sinh.
 
-Hai chỗ vẫn viết tay: trang **Dự án** (`du-an.html`, vì có mô tả chi tiết riêng) và chính **trang bài viết / trang sách** (mỗi bài một file HTML). Thêm dự án mới thì nhớ thêm cả ở `du-an.html`.
+### Sách: vẫn thêm tay
+Mỗi cuốn là một trang HTML riêng nên thêm một dòng vào `BOOKS` trong `site/noi-dung.js` (xuống **cuối**; trang chủ hiện 3 cuốn `doc-ngay` ở cuối, `status:"sap-co"` hiện ở dòng "Sắp có"). Ảnh đặt trong `site/anh/`, ghi đường dẫn dạng `anh/ten-anh.jpg`.
+
+Còn viết tay: trang **Dự án** (`du-an.html`, vì có mô tả chi tiết riêng) và các trang sách.

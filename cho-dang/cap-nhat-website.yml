@@ -1,0 +1,31 @@
+name: Cập nhật website tự động
+
+# Mỗi khi bạn push bài viết / dự án mới, chạy scripts/build.mjs
+# để cập nhật danh sách trên trang chủ, blog và tạo trang bài mới.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "blog/**"
+      - "du-an/**"
+      - "scripts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/build.mjs
+      - name: Ghi lại thay đổi (nếu có)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || (git commit -m "Tự động cập nhật website từ dữ liệu mới [skip ci]" && git push)
