@@ -168,3 +168,17 @@ footer .socials a:hover{background:var(--on-primary);color:var(--primary);border
   html{scroll-behavior:auto}
 }
 .brand img{width:32px;height:32px;border-radius:50%;display:block}
+
+/* Menu thu gọn (menu.js): trên điện thoại ẩn thanh menu, hiện nút ≡ */
+.menu-btn,.m-panel{display:none}
+@media (max-width:720px){
+  .nav{display:none}
+  .menu-btn{display:grid}
+  .site-header .container{grid-template-columns:1fr auto}
+  .tools{gap:8px}
+  .m-panel:not([hidden]){display:flex;flex-direction:column;gap:2px;position:absolute;left:0;right:0;top:100%;padding:8px 16px 16px;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:0 12px 24px rgba(0,0,0,.08);max-height:calc(100vh - 64px);overflow-y:auto}
+  .m-panel a{font-family:var(--font-sans);padding:12px 10px;font-size:16px;font-weight:500;color:var(--text-body);text-decoration:none;border-radius:var(--radius-sm)}
+  .m-panel a:hover{color:var(--primary-text)}
+  .m-panel a[aria-current="page"]{color:var(--primary-text);font-weight:600;background:var(--bg-alt)}
+}
+@media (min-width:721px){.m-panel{display:none!important}}
