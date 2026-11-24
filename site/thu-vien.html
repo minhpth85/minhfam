@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thư viện · Minh Fam</title>
+<meta name="description" content="Thư viện ebook của Minh Fam: đọc thử miễn phí, đọc ngay trên web, và các bộ combo.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="Minh Fam">
+<meta property="og:title" content="Thư viện · Minh Fam">
+<meta property="og:description" content="Ebook của Minh Fam: đọc thử miễn phí, đọc ngay trên web, và các bộ combo.">
+<link rel="icon" type="image/png" href="anh/logo.png">
+<link rel="apple-touch-icon" href="anh/logo.png">
+<meta name="theme-color" content="#fbfaf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a12" media="(prefers-color-scheme: dark)">
+<script>
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="minhfam.css">
+<style>
+.pill{font-family:var(--font-sans)}
+/* header: menu canh giữa, luôn dính trên cùng khi cuộn */
+/* type */
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:var(--space-12)}
+.sec-head p{margin:8px 0 0;max-width:640px;color:var(--text-muted)}
+.count{font:600 14px/20px var(--font-sans);color:var(--text-muted)}
+/* buttons, chips */
+.btn.sm{min-height:36px;padding:6px 14px;font-size:14px;line-height:22px}
+/* hero */
+.hero{padding:var(--space-24) 0 var(--space-20)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.shelf{display:flex;justify-content:center;align-items:flex-end;gap:0;padding:8px 0}
+.shelf .cover{width:34%;box-shadow:var(--shadow-md);transform:rotate(-4deg);margin-right:-6%}
+.shelf .cover:nth-child(2){transform:translateY(-14px);z-index:2;width:38%}
+.shelf .cover:nth-child(3){transform:rotate(4deg);margin-right:0;margin-left:-6%}
+/* info strip */
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.strip .item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:24px}
+.strip .ico{width:40px;height:40px;border-radius:var(--radius-sm);background:var(--surface-soft);color:var(--primary-text);display:grid;place-items:center;margin-bottom:14px}
+.strip p{margin:8px 0 0;color:var(--text-muted);font-size:15px;line-height:24px}
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:28px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid var(--border);background:var(--surface);color:var(--text-body);border-radius:var(--radius-full);padding:6px 14px;font-weight:500;font-size:14px;line-height:20px;cursor:pointer}
+.pill:hover{border-color:var(--border-strong)}
+.pill[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.pill small{opacity:.7;margin-left:4px;font-size:12px}
+.search{position:relative;width:300px;max-width:100%}
+.search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-muted)}
+.search input{width:100%;height:44px;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--text-body);padding:0 16px 0 44px;font:400 16px var(--font-sans)}
+.search input:focus{outline:none;border-color:var(--primary)}
+/* covers (bìa tạo bằng CSS, thay bằng ảnh bìa thật khi có) */
+.cover{position:relative;aspect-ratio:3/4;border-radius:var(--radius-md);overflow:hidden;color:var(--green-50);display:flex;flex-direction:column;justify-content:space-between;padding:16px 16px 18px;background:var(--c1,#32854d)}
+.cover::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 90% 0%,var(--c2,#4a9b60) 0,transparent 60%)}
+.cover>*{position:relative}
+.cover .tag{font:600 10px/12px var(--font-sans);letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.cover .t{font:600 clamp(15px,2.2vw,22px)/1.15 var(--font-serif);letter-spacing:-.015em}
+.cover .a{font:500 11px/14px var(--font-sans);opacity:.85;margin-top:8px}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover.photo::before{background:linear-gradient(180deg,rgba(23,28,24,.4) 0,rgba(23,28,24,0) 22%,rgba(23,28,24,.3) 42%,rgba(23,28,24,.6) 62%,rgba(23,28,24,.92) 100%);z-index:1}
+.cover.photo>.tag,.cover.photo>span{z-index:2}
+/* book grid */
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.book{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:16px 16px 20px;display:flex;flex-direction:column;gap:12px;transition:transform .15s,box-shadow .15s}
+.book:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.book .cover{box-shadow:var(--shadow-sm);aspect-ratio:4/3}
+.book h3{margin-top:4px}
+.book p{margin:0;font-size:15px;line-height:23px;color:var(--text-muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.book .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:auto;padding-top:4px}
+.book .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.book .price{font:600 16px/24px var(--font-sans);color:var(--accent-text)}
+.book .price s{font-weight:500;font-size:13px;color:var(--text-muted);margin-left:6px}
+.topic{position:absolute;left:12px;bottom:12px;background:rgba(251,250,245,.92);color:var(--green-900,#17301d);font:600 12px/16px var(--font-sans);padding:3px 12px;border-radius:var(--radius-full);backdrop-filter:blur(4px)}
+.connect-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.connect-text p{max-width:none}
+.idea{display:grid;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg,20px);padding:28px}
+@media (max-width:820px){.connect-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:520px){.idea{padding:20px 16px}.idea-actions .btn{width:100%}}
+.idea label{display:block;font:600 14px/20px var(--font-sans);color:var(--text);margin-bottom:6px}
+.idea label span{font-weight:400;color:var(--text-muted)}
+.idea textarea,.idea input[type=text],.idea input[type=email]{width:100%;border:1.5px solid var(--border);border-radius:var(--radius-md);background:var(--surface);color:var(--text-body);padding:12px 16px;font:400 16px/1.5 var(--font-serif,inherit)}
+.idea textarea{resize:vertical;min-height:110px}
+.idea textarea:focus,.idea input:focus{outline:none;border-color:var(--primary)}
+.idea .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.idea-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.idea-msg{margin:0;font:500 14px/20px var(--font-sans);color:var(--primary-text)}
+.idea-msg.err{color:var(--danger,#c2412f)}
+.badge-soon{position:absolute;top:12px;left:12px;background:rgba(23,48,29,.7);color:var(--green-50);font:600 11px/16px var(--font-sans);padding:2px 10px;border-radius:var(--radius-full);backdrop-filter:blur(4px)}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted);background:var(--surface);border:1px dashed var(--border-strong);border-radius:var(--radius-lg)}
+/* combo */
+.combos{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.combo{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:28px;display:flex;flex-direction:column;gap:14px}
+.combo .stack{display:flex}
+.combo .stack .cover{width:64px;border-radius:8px;padding:6px;margin-right:-14px;box-shadow:0 0 0 3px var(--surface)}
+.combo .stack .cover .t,.combo .stack .cover .tag,.combo .stack .cover .a{display:none}
+.combo ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:15px;line-height:22px}
+.combo li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-right:10px;vertical-align:middle}
+.combo .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;flex-wrap:wrap}
+.combo .price{font:600 24px/30px var(--font-sans);color:var(--accent-text)}
+.combo .price s{font:500 14px var(--font-sans);color:var(--text-muted);margin-left:8px}
+/* how it is written */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:var(--radius-sm);background:var(--primary);color:var(--on-primary);font:600 15px/1 var(--font-sans);margin-bottom:14px}
+.steps h3{font-size:23px;line-height:30px;margin-bottom:6px}
+.steps p{margin:0;font-size:15px;line-height:23px;color:var(--text-muted)}
+/* help + band */
+.callout{background:var(--note-bg);border-radius:var(--radius-lg);padding:24px 28px}
+.callout p{margin:0}
+/* footer */
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .shelf{max-width:420px}
+  .strip{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .hero{padding:48px 0 var(--space-12)}
+  .books{gap:16px}
+}
+@media (max-width:620px){
+  .combos,.steps{grid-template-columns:1fr}
+  .search{width:100%}
+}
+@media (max-width:820px){.books{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.books{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){
+  .book{transition:none}.book:hover{transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="anh/logo.png" alt="" width="32" height="32">Minh Fam</a>
+    <nav class="nav" aria-label="Chính">
+      <a href="index.html">Trang chủ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="thu-vien.html" aria-current="page">Thư viện</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Về Minh</a>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Giao diện tối" aria-pressed="false">
+        <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Thư viện</p>
+      <h1>Những chiếc mỏ neo.</h1>
+      <p class="lead">Nơi mình đóng gói kiến thức mà mình gom góp lại trong quá trình tự phát triển bản thân. Những nội dung này đã giúp mình có niềm tin vào bản thân, vực mình dậy sau những giai đoạn trì trệ chán nản. Mình hi vọng nó sẽ đến được bạn vào đúng lúc bạn cần nó nhất.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#tu-sach">Vào Thư viện</a>
+        <a class="btn secondary" id="heroCombo" href="#combo">Xem combo</a>
+      </div>
+    </div>
+    <div class="shelf" id="shelf" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- 2. Dải thông tin -->
+<section class="alt" style="padding:40px 0">
+  <div class="container strip">
+    <div class="item">
+      <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3>Ebook đọc trên web</h3>
+      <p>Mở là đọc, không cần tải file về máy.</p>
+    </div>
+    <div class="item">
+      <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/></svg></div>
+      <h3>Đọc thử miễn phí</h3>
+      <p>Mỗi cuốn mở sẵn vài phần đầu để bạn xem có hợp không.</p>
+    </div>
+    <div class="item">
+      <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></div>
+      <h3>Cập nhật theo thời gian</h3>
+      <p>Sách được bổ sung khi mình học thêm điều mới.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Tủ sách -->
+<section id="tu-sach">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Tủ sách</p>
+        <h2>Tất cả ebook</h2>
+      </div>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="toolbar">
+      <div class="pills" id="pills" role="group" aria-label="Lọc theo trạng thái"></div>
+      <label class="search">
+        <span class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tìm ebook</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Tìm theo tên, chủ đề…" autocomplete="off">
+      </label>
+    </div>
+    <div class="books" id="books"></div>
+  </div>
+</section>
+
+<!-- 4. Combo -->
+<section class="alt" id="combo">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Combo</p>
+        <h2>Mua một lần, mở cả bộ</h2>
+        <p>Gom các cuốn đi cùng nhau để đọc theo một mạch.</p>
+      </div>
+    </div>
+    <div class="combos" id="combos"></div>
+  </div>
+</section>
+
+<!-- 7. Liên hệ -->
+<section class="band" id="ket-noi">
+  <div class="container connect-grid">
+    <div class="connect-text">
+      <p class="eyebrow">Kết nối</p>
+      <h2>Bạn muốn có thêm chủ đề mới?</h2>
+      <p>Nếu bạn muốn đọc sâu về chủ đề nào, hãy để lại ý tưởng ở đây nhé. Biết đâu nó lại gợi cho mình ra mắt thêm những nội dung chuyên sâu hữu ích.</p>
+    </div>
+    <form class="idea" id="ideaForm" novalidate>
+      <div><label for="ideaName">Mình có thể gọi bạn là gì ?</label><input id="ideaName" name="name" type="text" maxlength="80" autocomplete="name"></div>
+      <div><label for="ideaText">Bạn đang gặp khó khăn lớn nhất nào mà muốn có một cuốn sách giải quyết vấn đề?</label><textarea id="ideaText" name="idea" rows="4" maxlength="1200" required></textarea></div>
+      <div><label for="ideaMail">Nếu chúng mình giữ kết nối với nhau, hãy để lại email hoặc facebook của bạn nhé ^^</label><input id="ideaMail" name="email" type="text" maxlength="160" autocomplete="email"></div>
+      <input class="hp" id="ideaHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="idea-actions"><button class="btn" type="submit" id="ideaBtn">Gửi ý tưởng</button><p class="idea-msg" id="ideaMsg" role="status" aria-live="polite"></p></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <nav class="fnav" aria-label="Chân trang">
+        <a href="du-an.html">Dự án cá nhân</a>
+        <a href="thu-vien.html">Thư viện</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">Về Minh</a>
+      </nav>
+      <div class="socials">
+        <a href="https://web.facebook.com/profile.php?id=61596318492128" target="_blank" rel="noopener" aria-label="Facebook của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+        </a>
+        <a href="https://minhfam.substack.com/" target="_blank" rel="noopener" aria-label="Substack của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4h15v2.2h-15zM4.5 8.2h15v2.2h-15zM4.5 12.4h15V21l-7.5-4.2L4.5 21z"/></svg>
+        </a>
+        <!-- TODO: thay # bằng link Instagram của Minh -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="copy">© Minh Fam · Learn in Public</p>
+  </div>
+</footer>
+
+<script src="noi-dung.js"></script>
+<script>
+/* ============================================================
+   DỮ LIỆU EBOOK — chỉ cần sửa danh sách này.
+   status: "doc-ngay" (đã có) | "sap-co" (sắp ra mắt)
+   link:   đường dẫn trang đọc / trang bán (để "" nếu chưa có)
+   anh:    ảnh bìa, ví dụ "anh/bia-ten-sach.jpg" (để "" thì dùng bìa màu tự tạo)
+   gia / giaGoc: số (VNĐ) hoặc null nếu miễn phí / chưa công bố
+   Các cuốn dưới đây là MẪU, hãy thay bằng ebook thật của bạn.
+   ============================================================ */
+/* Danh sách sách nằm ở noi-dung.js (BOOKS). Thêm sách mới ở đó. */
+/* Combo: sach = danh sách id ở trên */
+var COMBOS=[
+];
+/* ============================================================ */
+
+var STATUS_LABEL={"doc-ngay":"Đọc ngay","sap-co":"Sắp có"};
+var state={f:"all",q:""};
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function vnd(n){return n.toLocaleString("vi-VN")+"đ"}
+function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/g,"d")}
+function byId(id){for(var i=0;i<BOOKS.length;i++)if(BOOKS[i].id===id)return BOOKS[i]}
+
+function cover(b,small){
+  var st="--c1:"+esc(b.c1||"#32854d")+";--c2:"+esc(b.c2||"#4a9b60");
+  var inner=b.anh?'<img src="'+esc(b.anh)+'" alt="'+(b.chu?'':'Bìa ebook '+esc(b.ten))+'" loading="lazy" style="object-position:'+esc(b.vitri||"50% 30%")+'">'+
+      (b.chu?'<span></span><span><span class="t">'+esc(b.ten)+'</span></span>':'')
+    :'<span></span><span><span class="t">'+esc(b.ten)+'</span></span>';
+  return '<div class="cover'+(b.anh&&b.chu?' photo':'')+'" style="'+st+'"'+(b.anh?'':' role="img" aria-label="Bìa ebook '+esc(b.ten)+'"')+'>'+inner+(b.status==="sap-co"?'<span class="badge-soon">Sắp có</span>':'')+'</div>';
+}
+
+function priceHtml(o){
+  if(o.gia==null)return '';
+  return '<span class="price">'+vnd(o.gia)+(o.giaGoc?'<s>'+vnd(o.giaGoc)+'</s>':'')+'</span>';
+}
+
+function renderShelf(){
+  var picks=BOOKS.filter(function(b){return b.noibat}).slice(0,3);
+  if(picks.length<3)picks=BOOKS.slice(0,3);
+  $("shelf").innerHTML=picks.map(function(b){return cover(b)}).join("");
+}
+
+function renderPills(){
+  var counts={all:BOOKS.length,"doc-ngay":0,"sap-co":0,combo:COMBOS.length};
+  BOOKS.forEach(function(b){counts[b.status]++});
+  var items=[["all","Tất cả"],["doc-ngay","Đọc ngay"],["sap-co","Sắp có"],["combo","Combo"]].filter(function(i){return i[0]==="all"||counts[i[0]]>0});
+  $("pills").innerHTML=items.map(function(i){
+    return '<button type="button" class="pill" data-f="'+i[0]+'" aria-pressed="'+(state.f===i[0])+'">'+i[1]+'<small>'+counts[i[0]]+'</small></button>';
+  }).join("");
+}
+
+function renderBooks(){
+  var q=norm(state.q.trim());
+  var list=BOOKS.filter(function(b){
+    if(state.f==="combo")return false;
+    if(state.f!=="all"&&b.status!==state.f)return false;
+    return !q||norm(b.ten+" "+b.mota+" "+b.chude).indexOf(q)>-1;
+  });
+  $("count").textContent=state.f==="combo"?COMBOS.length+" combo":list.length+" cuốn";
+  if(state.f==="combo"){
+    $("books").innerHTML='<div class="empty">Các combo nằm ở phần bên dưới. <a href="#combo">Xem combo</a></div>';
+    return;
+  }
+  if(!list.length){$("books").innerHTML='<div class="empty">Chưa có ebook nào khớp. Thử bỏ bộ lọc hoặc đổi từ khóa.</div>';return}
+  $("books").innerHTML=list.map(function(b){
+    var soon=b.status==="sap-co";
+    var cta=soon?'<span class="chip ghost">Sắp có</span>'
+      :(b.link?'<a class="btn sm" href="'+esc(b.link)+'">Đọc ngay</a>':'<span class="chip note">Đang cập nhật link</span>');
+    return '<article class="book">'+cover(b).replace(/<\/div>$/,'<span class="topic">'+esc(b.chude)+'</span></div>')+
+      '<h3>'+esc(b.ten)+'</h3><p>'+esc(b.mota)+'</p>'+
+      '<div class="row">'+priceHtml(b)+cta+'</div></article>';
+  }).join("");
+}
+
+function renderCombos(){
+  $("combos").innerHTML=COMBOS.map(function(c){
+    var books=c.sach.map(byId).filter(Boolean);
+    return '<article class="combo"><div class="stack">'+books.map(function(b){return cover(b)}).join("")+'</div>'+
+      '<div><span class="chip">'+books.length+' cuốn</span></div>'+
+      '<h3>'+esc(c.ten)+'</h3><p style="margin:0;color:var(--text-muted)">'+esc(c.doi)+'</p>'+
+      '<ul>'+books.map(function(b){return '<li>'+esc(b.ten)+'</li>'}).join("")+'</ul>'+
+      '<div class="foot">'+priceHtml(c)+(c.link?'<a class="btn" href="'+esc(c.link)+'">Mua combo</a>':'<span class="chip note">Đang cập nhật link</span>')+'</div></article>';
+  }).join("");
+}
+
+$("pills").addEventListener("click",function(e){
+  var b=e.target.closest(".pill");if(!b)return;
+  state.f=b.getAttribute("data-f");renderPills();renderBooks();
+});
+$("q").addEventListener("input",function(e){state.q=e.target.value;renderBooks()});
+
+renderShelf();renderPills();renderBooks();renderCombos();
+if(!COMBOS.length){$("combo").hidden=true;$("heroCombo").hidden=true}
+
+/* đổi giao diện sáng / tối */
+(function(){
+  var root=document.documentElement,btn=$("theme");
+  var mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':!!(mq&&mq.matches)}
+  function sync(){btn.setAttribute('aria-pressed',isDark()?'true':'false')}
+  sync();
+  if(mq&&mq.addEventListener)mq.addEventListener('change',sync);
+  btn.addEventListener('click',function(){
+    var n=isDark()?'light':'dark';
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n)}catch(e){}
+    sync();
+  });
+})();
+
+/* ===== FORM GỬI Ý TƯỞNG =====
+   Dữ liệu đi vào Google Form (tự lưu vào Google Sheet).
+   Sau khi tạo Google Form, điền 2 chỗ dưới đây (cách lấy: xem tai-lieu/HUONG-DAN-FORM.md).
+   Để trống thì form sẽ mở email thay thế. */
+var IDEA_FORM={
+  action:"https://docs.google.com/forms/d/e/1FAIpQLSdGXV1YZScVny2JJaTGRD5VnGlzaaZ-9Sh5EOmI3p_qwwWNrg/formResponse",
+  fields:{idea:"entry.668789425",name:"entry.1673062942",email:"entry.1438096904"}
+};
+(function(){
+  var f=$("ideaForm"); if(!f) return;
+  var msg=$("ideaMsg"), btn=$("ideaBtn"), last=0;
+  function say(t,err){msg.textContent=t;msg.className="idea-msg"+(err?" err":"")}
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var idea=$("ideaText").value.trim(), name=$("ideaName").value.trim(), mail=$("ideaMail").value.trim();
+    if($("ideaHp").value) return;
+    if(idea.length<5){say("Bạn viết giúp mình vài chữ về chủ đề nhé.",true);return}
+    if(Date.now()-last<8000){say("Bạn chờ vài giây rồi gửi lại nhé.",true);return}
+    last=Date.now();
+    if(!IDEA_FORM.action){
+      location.href="mailto:hongminh.fam@gmail.com?subject="+encodeURIComponent("Ý tưởng cho thư viện")+"&body="+encodeURIComponent(idea+"\n\n"+name+(mail?" / "+mail:""));
+      return;
+    }
+    var d=new FormData();
+    d.append(IDEA_FORM.fields.idea,idea);
+    if(name) d.append(IDEA_FORM.fields.name,name);
+    if(mail) d.append(IDEA_FORM.fields.email,mail);
+    btn.disabled=true; say("Đang gửi…");
+    fetch(IDEA_FORM.action,{method:"POST",mode:"no-cors",body:d}).then(function(){
+      f.reset(); say("Mình đã nhận được. Cảm ơn bạn nhé!");
+    }).catch(function(){say("Chưa gửi được, bạn thử lại sau nhé.",true)}).then(function(){btn.disabled=false});
+  });
+})();
+</script>
+</body>
+</html>

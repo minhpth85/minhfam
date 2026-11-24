@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dự án cá nhân · Minh Fam</title>
+<meta name="description" content="Các dự án cá nhân của Minh Fam: Shadow Work (hành trình 7 ngày đối thoại nội tâm) và Cẩm nang tâm lý học về giá trị bản thân.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="Minh Fam">
+<meta property="og:title" content="Dự án cá nhân · Minh Fam">
+<meta property="og:description" content="Shadow Work và Cẩm nang tâm lý học về giá trị bản thân: hai dự án Minh tự làm và chia sẻ công khai.">
+<link rel="icon" type="image/png" href="anh/logo.png">
+<link rel="apple-touch-icon" href="anh/logo.png">
+<meta name="theme-color" content="#fbfaf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a12" media="(prefers-color-scheme: dark)">
+<script>
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="minhfam.css">
+<style>
+/* header: menu canh giữa, luôn dính trên cùng khi cuộn */
+/* type */
+.sec-head{margin-bottom:var(--space-12)}
+.sec-head p{margin:8px 0 0;max-width:640px;color:var(--text-muted)}
+/* buttons, chips */
+/* hero */
+.hero{padding:var(--space-24) 0 var(--space-16)}
+/* project card */
+.projects{display:grid;gap:32px}
+.project{display:grid;grid-template-columns:.8fr 1.2fr;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .15s,box-shadow .15s}
+.project:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.project .body{padding:32px;display:flex;flex-direction:column;gap:16px}
+.project .tags{display:flex;flex-wrap:wrap;gap:8px}
+.project h2{margin:0;font-size:32px;line-height:38px}
+.project .sub{margin:0;color:var(--text-muted)}
+.project ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.project li{display:flex;gap:10px;align-items:flex-start}
+.project li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-top:10px}
+.project .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto;padding-top:8px}
+/* cover tạo bằng CSS */
+.art{position:relative;min-height:320px;color:var(--green-50);display:flex;flex-direction:column;justify-content:space-between;padding:28px;background:var(--c1)}
+.art::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 90% 0%,var(--c2) 0,transparent 60%)}
+.art>*{position:relative}
+.art .tag{font:600 11px/14px var(--font-sans);letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.art .t{font:600 clamp(26px,3.4vw,38px)/1.1 var(--font-serif);letter-spacing:-.015em}
+.art .a{font:500 13px/18px var(--font-sans);opacity:.9;margin-top:10px}
+.project.flip{grid-template-columns:1.2fr .8fr}
+.project.flip .art{order:2}
+/* lộ trình 7 ngày */
+.days{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.days li{display:inline-flex;gap:8px;align-items:center;background:var(--surface-soft);color:var(--primary-text);border-radius:var(--radius-full);padding:4px 12px 4px 4px;font:500 13px/20px var(--font-sans)}
+.days li::before{content:attr(data-n);display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--primary);color:var(--on-primary);font:600 12px/1 var(--font-sans);margin:0}
+/* thứ tự gợi ý */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:20px}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:32px;height:32px;border-radius:var(--radius-sm);background:var(--primary);color:var(--on-primary);font:600 15px/1 var(--font-sans);margin-bottom:14px}
+.steps h3{font-size:23px;line-height:30px;margin-bottom:6px}
+.steps p{margin:0;font-size:15px;line-height:23px;color:var(--text-muted)}
+.callout{background:var(--note-bg);border-radius:var(--radius-lg);padding:24px 28px}
+.callout p{margin:0}
+/* footer */
+@media (max-width:900px){
+  .project,.project.flip{grid-template-columns:1fr}
+  .project.flip .art{order:0}
+  .art{min-height:200px}
+}
+@media (max-width:720px){
+  .hero{padding:48px 0 var(--space-12)}
+  .project h2{font-size:24px;line-height:30px}
+  .project .body{padding:24px 20px}
+}
+@media (max-width:620px){.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){
+  .project{transition:none}.project:hover{transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="anh/logo.png" alt="" width="32" height="32">Minh Fam</a>
+    <nav class="nav" aria-label="Chính">
+      <a href="index.html">Trang chủ</a>
+      <a href="du-an.html" aria-current="page">Dự án</a>
+      <a href="thu-vien.html">Thư viện</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Về Minh</a>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Giao diện tối" aria-pressed="false">
+        <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Dự án cá nhân</p>
+    <h1>Những thứ mình tự làm,<br>học và chia sẻ công khai.</h1>
+    <p class="lead">Hai dự án nhỏ cùng xoay quanh một câu hỏi: làm sao để thấy mình đủ giá trị mà không phải chứng minh gì cả. Một cuốn cẩm nang để hiểu, một hành trình 7 ngày để thực hành.</p>
+  </div>
+</section>
+
+<section class="alt" id="du-an" style="padding-top:56px">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Đang có</p>
+      <h2>2 dự án</h2>
+    </div>
+
+    <div class="projects">
+
+      <!-- Shadow Work -->
+      <article class="project" id="shadow-work">
+        <div class="art" style="--c1:#17301d;--c2:#4a9b60" role="img" aria-label="Bìa dự án Shadow Work">
+          <span class="tag">Hành trình 7 ngày</span>
+          <span>
+            <span class="t">Shadow Work</span>
+            <div class="a">Đối thoại nội tâm · 15 phút mỗi ngày</div>
+          </span>
+        </div>
+        <div class="body">
+          <div class="tags">
+            <span class="chip">Đã ra mắt</span>
+            <span class="chip ghost">Nhật ký tương tác</span>
+            <span class="chip ghost">Tâm lý học Jung</span>
+          </div>
+          <h2>Shadow Work: 7 ngày đối thoại nội tâm</h2>
+          <p class="sub">Một nhật ký trên web để gọi tên những phần bị cất giấu trong mình, dựa trên khái niệm "Bóng tối" của Carl Jung. Mỗi ngày một chủ đề, không có câu trả lời đúng hay sai, chỉ có sự thành thật dịu dàng với chính mình.</p>
+          <ul>
+            <li>Lộ trình 7 ngày, có theo dõi tiến độ hoàn thành.</li>
+            <li>Mỗi ngày một chủ đề, từ mặt nạ xã hội đến đối thoại và hợp nhất.</li>
+            <li>Mở là dùng ngay trên điện thoại hay máy tính.</li>
+          </ul>
+          <ol class="days" aria-label="Lộ trình 7 ngày">
+            <li data-n="1">Mặt nạ xã hội</li>
+            <li data-n="2">Tấm gương phán xét</li>
+            <li data-n="3">Cơn giận &amp; Ranh giới</li>
+            <li data-n="4">Tiếng nói phê bình</li>
+            <li data-n="5">Nỗi sợ &amp; Trì hoãn</li>
+            <li data-n="6">Bóng tối vàng</li>
+            <li data-n="7">Đối thoại &amp; Hợp nhất</li>
+          </ol>
+          <div class="actions">
+            <a class="btn" href="https://shadowwork-journal.pages.dev/" target="_blank" rel="noopener">Bắt đầu hành trình
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Cẩm nang -->
+      <article class="project flip" id="cam-nang">
+        <div class="art" style="--c1:#8a6421;--c2:#c2923d" role="img" aria-label="Bìa Cẩm nang tâm lý học về giá trị bản thân">
+          <span class="tag">Cẩm nang đọc trên web</span>
+          <span>
+            <span class="t">Giá trị bản thân bền vững</span>
+            <div class="a">Tâm lý học · Bài tập thực hành</div>
+          </span>
+        </div>
+        <div class="body">
+          <div class="tags">
+            <span class="chip">Đọc ngay</span>
+            <span class="chip ghost">Cẩm nang tương tác</span>
+            <span class="chip ghost">Tâm lý học</span>
+          </div>
+          <h2>Cẩm nang tâm lý học về giá trị bản thân</h2>
+          <p class="sub">Giải mã vì sao giá trị của mình hay dao động theo thành tích và lời khen, rồi từng bước xây lại một nền móng vững hơn. Có sơ đồ để tương tác và khung viết ngay trong trang.</p>
+          <ul>
+            <li>Bảng tự đánh giá 8 dấu hiệu của giá trị bản thân có điều kiện.</li>
+            <li>5 khái niệm nền tảng: Self-Worth, Self-Esteem, Self-Compassion và các mô hình đi kèm.</li>
+            <li>Gốc rễ từ thời thơ ấu: gắn bó, công nhận có điều kiện, tiếng nói phê phán nội tâm.</li>
+            <li>7 bài thực hành journaling, ghi chú tự lưu trên trình duyệt và tải về được.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="camnang-tamlyhoc-giatricanhan.html">Đọc cẩm nang</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="thu-tu">
+  <div class="container">
+    <div class="sec-head">
+      <p class="eyebrow">Gợi ý cách dùng</p>
+      <h2>Hiểu trước, thực hành sau</h2>
+      <p>Hai dự án đi cùng nhau được, nhưng cũng đọc riêng được. Đây chỉ là một cách sắp xếp mình thấy hợp.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Đọc cẩm nang</h3><p>Làm bảng tự đánh giá, rồi đọc phần khái niệm và gốc rễ để có ngôn ngữ gọi tên những gì mình đang trải qua.</p></li>
+      <li><h3>Đi Shadow Work</h3><p>Mỗi ngày 15 phút trong 7 ngày để soi vào từng góc: mặt nạ, cơn giận, nỗi sợ và cả phần tỏa sáng bị khóa lại.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" style="padding:48px 0">
+  <div class="container narrow">
+    <div class="callout">
+      <div class="label">Lưu ý</div>
+      <p>Đây là tài liệu tự học và tự soi chiếu, không thay thế tư vấn hay trị liệu của chuyên gia. Nếu bạn đang thấy quá nặng nề, hãy tìm đến nhà tâm lý hoặc bác sĩ để được hỗ trợ trực tiếp.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ket-noi">
+  <div class="container">
+    <p class="eyebrow">Kết nối</p>
+    <h2>Dùng thử và cho mình biết cảm nhận</h2>
+    <p>Bạn thấy chỗ nào hay, chỗ nào chưa rõ, cứ nhắn mình. Mình đọc hết và sẽ cập nhật dần.</p>
+    <div class="contacts">
+      <a class="btn" href="mailto:hongminh.fam@gmail.com">Gửi email</a>
+      <a class="btn secondary" href="https://minhfam.substack.com/" target="_blank" rel="noopener">Substack / Blog</a>
+      <a class="btn secondary" href="https://web.facebook.com/profile.php?id=61596318492128" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <nav class="fnav" aria-label="Chân trang">
+        <a href="du-an.html">Dự án cá nhân</a>
+        <a href="thu-vien.html">Thư viện</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">Về Minh</a>
+      </nav>
+      <div class="socials">
+        <a href="https://web.facebook.com/profile.php?id=61596318492128" target="_blank" rel="noopener" aria-label="Facebook của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+        </a>
+        <a href="https://minhfam.substack.com/" target="_blank" rel="noopener" aria-label="Substack của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4h15v2.2h-15zM4.5 8.2h15v2.2h-15zM4.5 12.4h15V21l-7.5-4.2L4.5 21z"/></svg>
+        </a>
+        <!-- TODO: thay # bằng link Instagram của Minh -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="copy">© Minh Fam · Learn in Public</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById("theme");
+  var mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':!!(mq&&mq.matches)}
+  function sync(){btn.setAttribute('aria-pressed',isDark()?'true':'false')}
+  sync();
+  if(mq&&mq.addEventListener)mq.addEventListener('change',sync);
+  btn.addEventListener('click',function(){
+    var n=isDark()?'light':'dark';
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n)}catch(e){}
+    sync();
+  });
+})();
+</script>
+</body>
+</html>

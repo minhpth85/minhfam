@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Một công việc đáng để gắn bó lâu dài sẽ không xuất hiện ngay lập tức · Minh Fam</title>
+<meta name="description" content="Đọc thư của James Clear một buổi sáng, và bốn câu hỏi giúp mình tìm ra công việc đủ vui, đủ nuôi sống mình và đủ giữ mình là chính mình.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="Minh Fam">
+<meta property="og:title" content="Một công việc đáng để gắn bó lâu dài sẽ không xuất hiện ngay lập tức">
+<meta property="og:image" content="anh/cong-viec-dang-gan-bo.jpg">
+<meta property="og:description" content="Đọc thư của James Clear một buổi sáng, và bốn câu hỏi giúp mình tìm ra công việc đủ vui, đủ nuôi sống mình và đủ giữ mình là chính mình.">
+<link rel="icon" type="image/png" href="anh/logo.png">
+<link rel="apple-touch-icon" href="anh/logo.png">
+<meta name="theme-color" content="#fbfaf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a12" media="(prefers-color-scheme: dark)">
+<script>
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="minhfam.css">
+<style>
+/* header: menu canh giữa, luôn dính trên cùng khi cuộn */
+/* type */
+.sec-head{margin-bottom:var(--space-12)}
+.sec-head p{margin:8px 0 0;max-width:640px;color:var(--text-muted)}
+/* buttons, chips */
+/* hero */
+.hero{padding:var(--space-24) 0 var(--space-16)}
+.callout{background:var(--note-bg);border-radius:var(--radius-lg);padding:24px 28px}
+.callout p{margin:0}
+/* footer */
+@media (max-width:900px){
+  .project,.project.flip{grid-template-columns:1fr}
+  .project.flip .art{order:0}
+  .art{min-height:200px}
+}
+@media (max-width:720px){
+  .hero{padding:48px 0 var(--space-12)}
+  .project h2{font-size:24px;line-height:30px}
+  .project .body{padding:24px 20px}
+}
+@media (max-width:620px){.steps{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){
+  .project{transition:none}.project:hover{transform:none}
+}
+/* ===== BLOG ===== */
+.blog-hero{padding:56px 0 8px}
+.blog-hero h1{font-size:68px;line-height:72px}
+.blog-hero .lead{margin-top:16px}
+/* ô ảnh tạm (thay bằng <img> khi có ảnh) */
+.ph{position:relative;background:linear-gradient(135deg,var(--c1,#b8e0c2),var(--c2,#317345));overflow:hidden}
+.ph::after{content:attr(data-label);position:absolute;left:12px;top:10px;font:600 10px/14px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.ph.sm::after{content:none}
+.ph img,.thumb img{width:100%;height:100%;object-fit:cover}
+.cat{display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--text);font:500 13px/16px var(--font-sans);padding:6px 12px 6px 8px;border-radius:var(--radius-full);text-decoration:none}
+.cat::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--primary)}
+.cat.soft{background:var(--surface-soft);color:var(--primary-text)}
+.meta{display:flex;align-items:center;gap:8px;font:400 14px/20px var(--font-sans);color:var(--text-muted)}
+.meta span+span::before{content:"";display:inline-block;width:3px;height:3px;border-radius:50%;background:currentColor;margin-right:8px;vertical-align:middle;opacity:.7}
+.top{display:grid;grid-template-columns:1.55fr 1fr;gap:32px;align-items:start}
+.feature{position:relative;display:block;aspect-ratio:3/2;border-radius:var(--radius-lg);overflow:hidden;text-decoration:none;color:var(--green-50);box-shadow:var(--shadow-sm)}
+.feature .ph{position:absolute;inset:0}
+.feature .ph::after{left:20px;top:18px}
+.feature .over{position:absolute;inset:auto 0 0 0;padding:72px 24px 22px;background:linear-gradient(to top,rgba(14,22,16,.78),rgba(14,22,16,.35) 60%,transparent)}
+.feature h2{color:var(--green-50);font-size:32px;line-height:38px;font-weight:600;margin:14px 0 10px;max-width:560px}
+.feature .meta{color:rgba(255,255,255,.85)}
+.feature:hover h2{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.latest h2{font-size:28px;line-height:34px;margin-bottom:16px}
+.latest ol{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.latest a{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit}
+.latest .thumb{width:72px;height:72px;border-radius:var(--radius-sm);overflow:hidden}
+.latest h3{font-size:17px;line-height:23px;font-weight:600;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.latest a:hover h3{color:var(--primary-text)}
+.rule{border:0;border-top:1px solid var(--border);margin:48px 0}
+.row-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.row-head h2{margin:0}
+.arrows{display:flex;gap:10px}
+.arrow{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-strong);background:transparent;color:var(--text-muted);display:grid;place-items:center;cursor:pointer}
+.arrow:hover:not(:disabled){color:var(--text);border-color:var(--text)}
+.arrow:disabled{opacity:.35;cursor:default}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.track::-webkit-scrollbar{display:none}
+.card{scroll-snap-align:start;background:var(--bg-alt);border-radius:var(--radius-lg);padding:8px 8px 20px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.card .ph{aspect-ratio:12/5;border-radius:var(--radius-md)}
+.card .body{padding:16px 12px 0;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .cat{align-self:flex-start}
+.card h3{font-size:23px;line-height:30px}
+.card p{margin:0;font-size:16px;line-height:25px;color:var(--text-muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .meta{margin-top:auto;padding-top:4px}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pager ol{list-style:none;margin:0;padding:0;display:flex;gap:6px}
+.pager ol a{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;font:500 13px/1 var(--font-sans);color:var(--text-muted);text-decoration:none}
+.pager ol a:hover{background:var(--bg-alt);color:var(--text)}
+.pager ol a[aria-current="page"]{background:var(--text);color:var(--bg)}
+.pager .arrow{border:0;background:var(--bg-alt)}
+.pager .arrow[aria-disabled="true"]{opacity:.35;pointer-events:none}
+@media (max-width:900px){
+  .top{grid-template-columns:1fr}
+  .track{grid-auto-columns:calc((100% - 24px)/2)}
+}
+@media (max-width:620px){
+  .blog-hero h1{font-size:44px;line-height:50px}
+  .feature{aspect-ratio:4/5}
+  .feature h2{font-size:26px;line-height:32px}
+  .feature .over{padding:56px 18px 18px}
+  .track{grid-auto-columns:82%;gap:16px}
+  .rule{margin:36px 0}
+}
+@media (max-width:420px){
+  .icon-btn{width:36px;height:36px}
+}
+/* ===== BÀI VIẾT ===== */
+.art-head{text-align:center;padding:64px 0 36px}
+.art-head .eyebrow a{color:inherit;text-decoration:none}
+.art-head h1{font-size:44px;line-height:50px;letter-spacing:-.015em;max-width:820px;margin:0 auto}
+.art-head .sub{font-size:23px;line-height:34px;color:var(--text-muted);max-width:600px;margin:18px auto 0;font-style:italic}
+.art-head .meta{justify-content:center;margin-top:22px}
+.hero-fig{margin:0 auto;max-width:480px}
+.hero-fig img{width:100%;height:auto;border-radius:var(--radius-lg)}
+.hero-fig figcaption,.caption{font:500 12px/18px var(--font-sans);color:var(--text-muted);text-align:center;margin-top:12px}
+.art-grid{display:grid;grid-template-columns:200px minmax(0,680px) 200px;gap:48px;justify-content:center;padding:56px 0 24px}
+.side{position:sticky;top:96px;align-self:start;border-right:1px solid var(--border);padding-right:24px}
+.side h2{font:600 12px/16px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:16px}
+.side ol{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.side a{display:grid;grid-template-columns:48px 1fr;gap:12px;text-decoration:none;color:inherit}
+.side .thumb{width:48px;height:60px;border-radius:6px}
+.side small{display:block;font:600 10px/14px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--primary-text);margin-bottom:2px}
+.side span{font:600 15px/20px var(--font-serif);color:var(--text)}
+.side a:hover span{color:var(--primary-text)}
+.prose{font-size:19px;line-height:31px;color:var(--text-body)}
+.prose p{margin:0 0 24px}
+.prose>p:first-child::first-letter{float:left;font:600 76px/62px var(--font-serif);color:var(--text);margin:6px 12px 0 0}
+.prose ul{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:12px}
+.prose li{position:relative;padding-left:26px}
+.prose li::before{content:"";position:absolute;left:4px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.prose strong{color:var(--text)}
+.prose .beat{font:400 italic 26px/36px var(--font-serif);color:var(--text);margin:8px 0 0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 28px}
+.compare>div{border-radius:var(--radius-md);padding:20px 20px 18px;font-size:17px;line-height:27px}
+.compare h3{font:600 12px/16px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.compare .bad{background:var(--note-bg)}
+.compare .bad h3{color:var(--note-fg)}
+.compare .good{background:var(--surface-soft)}
+.compare .good h3{color:var(--primary-text)}
+.pull{margin:40px 0;border:0;border-left:3px solid var(--green-500);padding:0 0 0 24px}
+.pull p{font:400 italic 26px/36px var(--font-serif);color:var(--text);margin:0}
+.pull p::before{content:"“"}.pull p::after{content:"”"}
+.share{display:flex;align-items:center;justify-content:center;gap:10px;padding:28px 0 8px}
+.share .lbl{font:600 12px/16px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-right:6px}
+.share a,.share button{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);display:grid;place-items:center;cursor:pointer;text-decoration:none}
+.share a:hover,.share button:hover{color:var(--on-primary);background:var(--primary);border-color:var(--primary)}
+.share svg{width:18px;height:18px}
+.share .ok{font:500 13px/1 var(--font-sans);color:var(--primary-text);margin-left:6px;opacity:0;transition:opacity .2s}
+.share .ok.on{opacity:1}
+.postnav{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;margin-top:28px}
+.postnav a{font:600 17px/24px var(--font-serif);color:var(--text);text-decoration:none;max-width:45%}
+.postnav small{display:block;font-family:var(--font-sans);font-size:12px;margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:600}
+.postnav .next{text-align:right;margin-left:auto}
+.postnav a:hover{color:var(--primary-text)}
+.related{padding:var(--space-20) 0 var(--space-24)}
+.related h2{text-align:center;margin-bottom:var(--space-12)}
+.related .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+@media (max-width:1100px){
+  .art-grid{grid-template-columns:minmax(0,680px);gap:0}
+  .art-grid .side{position:static;order:2;border:0;border-top:1px solid var(--border);padding:32px 0 0;margin-top:40px}
+  .art-grid .side ol{grid-template-columns:1fr 1fr}
+  .art-grid .spacer{display:none}
+}
+@media (max-width:720px){
+  .art-head{padding:40px 0 28px}
+  .art-head h1{font-size:32px;line-height:38px}
+  .hero-fig img{border-radius:var(--radius-md)}
+  .prose{font-size:19px;line-height:31px}
+  .compare{grid-template-columns:1fr}
+  .pull p{font-size:23px;line-height:32px}
+  .art-grid .side ol{grid-template-columns:1fr}
+  .related .grid{grid-template-columns:1fr}
+  .related{padding:var(--space-16) 0}
+}
+/* tiêu đề dài + nhịp */
+.art-head h1{font-size:44px;line-height:50px;max-width:860px}
+.prose .beat{margin:8px 0 22px}
+@media (max-width:720px){.art-head h1{font-size:32px;line-height:38px}}
+/* các câu hỏi đánh số */
+.prose h2.q{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;font-family:var(--font-serif);font-weight:500;font-size:24px;line-height:32px;letter-spacing:-.01em;margin:44px 0 16px}
+.prose h2.q .n{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--on-primary);font:600 16px/1 var(--font-sans);margin-top:-3px}
+.pillars{list-style:none;margin:4px 0 28px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.prose .pillars li{padding:16px 18px;background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius-md);font:600 15px/22px var(--font-sans);color:var(--text)}
+.prose .pillars li::before{content:none}
+.lines{border-left:3px solid var(--primary);padding-left:20px;font-style:italic}
+.lines span{display:block}
+@media (max-width:720px){
+  .prose h2.q{grid-template-columns:34px 1fr;font-size:21px;line-height:29px;gap:12px}
+  .prose h2.q .n{width:34px;height:34px;font-size:14px}
+}
+
+
+/* ===== QUY TẮC CHỮ TRONG BÀI: một cỡ, một font =====
+   Mọi nội dung bài viết cùng font (Lora) và cùng cỡ.
+   Chỉ nhấn bằng in đậm / in nghiêng. Ngoại lệ duy nhất: chữ cái đầu bài. */
+:root{--body-fs:18px;--body-lh:31px}
+@media (max-width:720px){:root{--body-fs:17px;--body-lh:29px}}
+.prose,.prose p,.prose li,.prose blockquote,.prose h2,.prose h3,.prose .compare>div,.prose .cta,.prose .ps,.hero-fig figcaption{font-family:var(--font-body);font-size:var(--body-fs);line-height:var(--body-lh);letter-spacing:0!important;text-transform:none}
+.prose :is(p,li,blockquote,h2,h3,.compare>div,.cta,.cta strong,.cta span,.ps,.beat,.pull p,.pillars li,.orn){font-size:var(--body-fs)!important;line-height:var(--body-lh)!important}
+.prose h2,.prose h3,.prose h2.q,.prose .compare h3{font-weight:700!important;color:var(--text-strong)!important}
+.prose h2.q{display:block;margin:32px 0 12px}
+.prose .beat{font-style:italic;font-weight:400;margin:0 0 22px}
+.pull{margin:28px 0;text-align:left;border-left:3px solid var(--brand);padding:0 0 0 20px}
+.pull p{font:italic 400 var(--body-fs)/var(--body-lh) var(--font-body);color:var(--text-strong)}
+.pull p::before,.pull p::after{content:none}
+.prose .compare h3{margin:0 0 4px}
+.prose .pillars li{font:400 var(--body-fs)/var(--body-lh) var(--font-body);color:var(--text)}
+.prose .cta strong{font:700 var(--body-fs)/var(--body-lh) var(--font-body);margin:0}
+.prose .cta span{font-size:var(--body-fs);line-height:var(--body-lh);font-style:italic}
+.prose .ps b{font-family:var(--font-body)}
+.prose .orn{font:400 var(--body-fs)/var(--body-lh) var(--font-body)}
+.hero-fig figcaption{font-style:italic;font-weight:400}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="anh/logo.png" alt="" width="32" height="32">Minh Fam</a>
+    <nav class="nav" aria-label="Chính">
+      <a href="index.html">Trang chủ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="thu-vien.html">Thư viện</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="about.html">Về Minh</a>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Giao diện tối" aria-pressed="false">
+        <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<article>
+  <header class="art-head container">
+    <p class="eyebrow"><a href="blog.html">Sự nghiệp</a></p>
+    <h1>Một công việc đáng để gắn bó lâu dài sẽ không xuất hiện ngay lập tức</h1>
+    <p class="sub">Đọc thư của James Clear một buổi sáng, và bốn câu hỏi giúp mình tìm ra công việc đủ vui, đủ nuôi sống mình và đủ giữ mình là chính mình.</p>
+    <div class="meta"><span>Minh Fam</span><span>23/11/2026</span><span>5 phút đọc</span></div>
+  </header>
+
+  <div class="container">
+    <figure class="hero-fig">
+      <img src="anh/cong-viec-dang-gan-bo.jpg" alt="Minh ngồi bên bàn gỗ cạnh cửa sổ, cúi viết vào cuốn sổ, bên cạnh là cốc cà phê xanh và chồng sổ cũ" width="2000" height="1333">
+      <figcaption>Viết reflection mỗi ngày một tí.</figcaption>
+    </figure>
+
+    <div class="art-grid">
+      <aside class="side" aria-labelledby="more-h">
+        <h2 id="more-h">Đọc thêm</h2>
+        <ol>
+          <li><a href="toxic-productivity.html"><img class="thumb" src="anh/toxic-productivity.jpg" alt="" style="object-fit:cover"><div><small>Sức khỏe tinh thần</small><span>Toxic productivity</span></div></a></li>
+          <li><a href="du-an.html#shadow-work"><div class="thumb ph sm" style="--c1:#4a9b60;--c2:#17301d"></div><div><small>Dự án</small><span>Shadow Work: 7 ngày đối thoại nội tâm</span></div></a></li>
+        </ol>
+      </aside>
+
+      <div class="prose">
+        <p>Sáng nay, mở mail ra mình có đọc được thư của James Clear, tác giả <em>Atomic Habits</em>, có đoạn này mình thấy khá hay.</p>
+        <p>Một sự nghiệp tốt, một công việc đáng để đi đường dài thường có 4 yếu tố sau:</p>
+        <ul class="pillars">
+          <li>Mình thích nó.</li>
+          <li>Mình giỏi nó.</li>
+          <li>Mình kiếm được tiền từ nó.</li>
+          <li>Và mình được ở gần những người thú vị.</li>
+        </ul>
+        <p>Nhưng cách hay nhất để tìm ra công việc trong mơ đó là đừng có vội hỏi: <strong>“Mình thích gì?”</strong></p>
+        <p>Mà hãy bắt đầu ngược lại:</p>
+
+        <h2 class="q"><span>1/ “Mình muốn ở gần ai?”</span></h2>
+        <p>Mặc dù ai cũng làm việc để kiếm xèng, ai cũng muốn có 1 mức lương cao nhưng sau bao năm thì mình nhận ra môi trường làm việc và con người quanh mình ảnh hưởng tới mình còn nhiều hơn cả công việc/mức lương mình đang làm.</p>
+        <p class="lines"><span>Ở gần người tò mò, mình cũng dễ tò mò theo.</span><span>Ở gần người siêng năng, mình cũng bớt lười đi.</span><span>Ở gần người dở hơi đáng yêu, tự nhiên mình thấy đời đỡ căng thẳng hơn nhiều.</span></p>
+
+        <h2 class="q"><span>2/ “Ở gần họ, mình có thể làm việc gì có giá trị?”</span></h2>
+        <p>Tiền bạc không đến từ sở thích đơn thuần. Tiền bạc đến từ giá trị mình tạo ra cho người khác, đặc biệt là những người mình muốn giúp đỡ và đồng hành.</p>
+        <p>Một vài câu hỏi đáng để suy ngẫm, ví dụ như:</p>
+        <ul>
+          <li>Mình có thể giúp họ giải quyết vấn đề gì?</li>
+          <li>Mình có thể làm tốt vai trò nào trong cộng đồng đó?</li>
+          <li>Mình có thể là người gắn kết, người tạo ra, người nâng đỡ hay người tổ chức?</li>
+        </ul>
+
+        <h2 class="q"><span>3/ “Mình giỏi điều gì?”</span></h2>
+        <p>Nhìn từ trải nghiệm thật, từ những lần làm thử, làm dở, làm sai chứ không phải chỉ ngồi nghĩ suông.</p>
+        <ul>
+          <li>Mình từng làm điều gì dễ hơn người khác?</li>
+          <li>Điều gì khiến người ta hay tìm tới mình nhờ vả?</li>
+          <li>Điều gì mình làm thấy nhẹ tênh trong khi người khác vật vã?</li>
+        </ul>
+
+        <h2 class="q"><span>4/ Và cuối cùng, ngồi reflect lại xem trong tất cả những điều đó, điều gì làm mình thực sự thấy vui và hứng thú?</span></h2>
+        <p>Niềm vui đôi khi nó không ồn ào mà nó có thể là một cảm giác mà có được khi mình kiên nhẫn làm một thứ nho nhỏ mỗi ngày, là cảm giác muốn học thêm 1 thứ dù chẳng có ai ép, là cảm giác mệt mỏi nhưng lại không thấy hối hận khi làm, là cảm giác sung sướng khi khách hàng gật đầu với thiết kế.</p>
+
+        <blockquote class="pull"><p>Công việc đáng để gắn bó lâu dài thông thường không phải là thứ mình chọn ngay từ đầu.</p></blockquote>
+
+        <p>Mà là thứ mình tìm ra được sau một hành trình đủ lâu ở gần những người mình muốn ở cạnh, làm việc mình muốn làm, và dần dần thấy mình tốt lên từng chút một.</p>
+        <p class="beat">Chậm cũng được.<br>Dở cũng được.</p>
+        <p>Miễn là đừng ngừng hỏi mình những câu hỏi thật lòng, và viết reflection mỗi tuần, mỗi ngày và cố mỗi ngày một tí.</p>
+        <p>Mình tin, ai rồi cũng sẽ tìm thấy công việc đủ vui, đủ nuôi sống mình và đủ giữ mình là chính mình.</p>
+        <p>Mình viết những dòng này cũng để xác nhận lại xem có đúng thế không. Và ngẫm lại, quả thật, mình đã dành tới 6 tháng lận để quan sát đối tượng khách hàng mà mình muốn hướng tới, tìm ra thứ mà họ sẽ trả tiền cho điều mà mình giỏi hơn những người khác 🙂 Chưa dám kết luận điều gì, nhưng tạm thời thấy cũng ổn ổn và thấy những gì James Clear nói cũng hợp lý.</p>
+
+        <div class="share">
+          <span class="lbl">Chia sẻ</span>
+          <a id="fb" href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener" aria-label="Chia sẻ lên Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+          </a>
+          <button id="copy" type="button" aria-label="Sao chép đường dẫn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+          </button>
+          <span class="ok" id="ok" role="status">Đã sao chép</span>
+        </div>
+
+        <nav class="postnav" aria-label="Bài khác">
+          <a class="next" href="blog.html"><small>Quay lại</small>Tất cả bài viết →</a>
+        </nav>
+      </div>
+
+      <div class="spacer" aria-hidden="true"></div>
+    </div>
+  </div>
+</article>
+
+<section class="related alt" aria-labelledby="rel-h">
+  <div class="container">
+    <h2 id="rel-h">Bài liên quan</h2>
+    <div class="grid">
+      <a class="card" href="toxic-productivity.html" style="background:var(--surface)">
+        <div class="ph"><img src="anh/toxic-productivity.jpg" alt=""></div>
+        <div class="body"><span class="cat soft">Sức khỏe tinh thần</span><h3>Toxic productivity</h3><p>Chín tháng tạm nghỉ side jobs, và câu chuyện về “năng suất độc hại”.</p></div>
+      </a>
+      <a class="card" href="xa-vai-nu-cuong.html" style="background:var(--surface)">
+        <div class="ph"><img src="anh/xa-vai-nu-cuong.jpg" alt="" style="object-position:top"></div>
+        <div class="body"><span class="cat soft">Shadow Work</span><h3>Xả vai nữ cường, và một góc nhỏ để trò chuyện với bóng tối của mình</h3><p>Câu chuyện đằng sau Shadow Work 7-day Journal.</p></div>
+      </a>
+      <a class="card" href="blog.html" style="background:var(--surface)">
+        <div class="ph" style="--c1:#e8e8de;--c2:#505e4f" data-label="Ảnh bìa"></div>
+        <div class="body"><span class="cat soft">Chủ đề</span><h3>Bài viết sắp lên</h3><p>Chỗ này sẽ hiện bài cùng chủ đề khi bạn đăng thêm.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <nav class="fnav" aria-label="Chân trang">
+        <a href="du-an.html">Dự án cá nhân</a>
+        <a href="thu-vien.html">Thư viện</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">Về Minh</a>
+      </nav>
+      <div class="socials">
+        <a href="https://web.facebook.com/profile.php?id=61596318492128" target="_blank" rel="noopener" aria-label="Facebook của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+        </a>
+        <a href="https://minhfam.substack.com/" target="_blank" rel="noopener" aria-label="Substack của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4h15v2.2h-15zM4.5 8.2h15v2.2h-15zM4.5 12.4h15V21l-7.5-4.2L4.5 21z"/></svg>
+        </a>
+        <!-- TODO: thay # bằng link Instagram của Minh -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="copy">© Minh Fam · Learn in Public</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById("theme");
+  var mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':!!(mq&&mq.matches)}
+  function sync(){btn.setAttribute('aria-pressed',isDark()?'true':'false')}
+  sync();
+  if(mq&&mq.addEventListener)mq.addEventListener('change',sync);
+  btn.addEventListener('click',function(){
+    var n=isDark()?'light':'dark';
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n)}catch(e){}
+    sync();
+  });
+})();
+</script>
+<script>
+(function(){
+  var u=location.href.split('#')[0];
+  var fb=document.getElementById('fb');if(fb)fb.href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(u);
+  var c=document.getElementById('copy'),ok=document.getElementById('ok');
+  if(c)c.addEventListener('click',function(){
+    var done=function(){ok.classList.add('on');setTimeout(function(){ok.classList.remove('on')},1800)};
+    try{navigator.clipboard.writeText(u).then(done,done)}catch(e){done()}
+  });
+})();
+</script>
+</body>
+</html>

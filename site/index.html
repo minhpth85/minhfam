@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minh Fam · Learn in Public</title>
+<meta name="description" content="Góc nhỏ của Minh Fam: dự án cá nhân, thư viện ghi chú đọc sách, blog và hành trình học tập công khai.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:site_name" content="Minh Fam">
+<meta property="og:title" content="Minh Fam · Learn in Public">
+<meta property="og:description" content="Dự án cá nhân, thư viện ghi chú đọc sách, blog và hành trình học tập công khai của Minh Fam.">
+<meta property="og:image" content="anh/mo-dau-ca-phe.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="anh/logo.png">
+<link rel="apple-touch-icon" href="anh/logo.png">
+<meta name="theme-color" content="#fbfaf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1a12" media="(prefers-color-scheme: dark)">
+<script>
+try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="minhfam.css">
+<style>
+/* header: menu canh giữa, luôn dính trên cùng khi cuộn */
+/* type */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:var(--space-12);flex-wrap:wrap}
+.sec-head p{margin:8px 0 0;color:var(--text-muted);max-width:560px}
+/* buttons, chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+/* 1. hero */
+.hero{padding:var(--space-24) 0 var(--space-20)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+.hero .chips{margin-top:24px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.portrait{position:relative}
+.portrait .ph{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/5;background:radial-gradient(90% 70% at 70% 20%,var(--green-300) 0,transparent 70%),var(--surface-soft);display:flex;align-items:flex-end;justify-content:center;padding:40px 16px 0}
+.portrait img{width:100%;height:100%;object-fit:contain;object-position:50% 100%;filter:drop-shadow(0 12px 24px rgba(23,28,24,.18))}
+.portrait .note{position:absolute;left:-28px;bottom:28px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--shadow-md);padding:12px 16px;max-width:230px;font-size:14px;line-height:20px}
+.portrait .note b{display:block;font:600 12px/16px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--primary-text);margin-bottom:4px}
+/* 3. projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.project{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;text-decoration:none;color:var(--text-body);transition:transform .15s,box-shadow .15s}
+.project:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.art{position:relative;aspect-ratio:16/9;color:var(--green-50);display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:var(--c1)}
+.art::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0%,var(--c2) 0,transparent 62%)}
+.art>*{position:relative}
+.art .tag{font:600 11px/14px var(--font-sans);letter-spacing:.1em;text-transform:uppercase;opacity:.9}
+.art .t{font:600 30px/1.1 var(--font-serif);letter-spacing:-.015em}
+.art .a{font:500 13px/18px var(--font-sans);opacity:.85;margin-top:8px}
+.project .body{padding:20px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.project h3{font-size:28px;line-height:34px}
+.project p{margin:0;color:var(--text-muted)}
+.project .go{margin-top:auto;padding-top:6px;font:600 15px/24px var(--font-sans);color:var(--primary-text);display:inline-flex;align-items:center;gap:6px}
+/* 4. library: bìa sách, nhãn và tên nằm ngay trong ảnh */
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.book{position:relative;display:block;aspect-ratio:3/4;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);text-decoration:none;color:#fff;background:var(--surface-soft);transition:transform .15s,box-shadow .15s}
+.book:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.book img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.book::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,28,24,.28) 0,rgba(23,28,24,0) 26%,rgba(23,28,24,0) 52%,rgba(23,28,24,.88) 100%)}
+.book .tag{position:absolute;z-index:2;top:14px;left:14px;background:rgba(255,255,255,.94);color:#171c18;font:600 12px/16px var(--font-sans);padding:4px 10px;border-radius:var(--radius-full)}
+.book h3{position:absolute;z-index:2;left:16px;right:16px;bottom:16px;margin:0;font:600 15px/20px var(--font-sans);letter-spacing:0;color:#fff;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.soon-note{margin:24px 0 0;font-size:15px;line-height:24px;color:var(--text-muted)}
+.soon-note b{font-family:var(--font-sans);font-weight:600;color:var(--text-body)}
+
+/* 5. blog */
+.posts{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:stretch}
+.post-feature{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden;text-decoration:none;color:var(--text-body);transition:transform .15s,box-shadow .15s}
+.post-feature:hover,.post-row:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.post-feature .pic{aspect-ratio:16/10;overflow:hidden;background:var(--surface-soft)}
+.post-feature .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.post-feature .body{padding:24px;display:flex;flex-direction:column;gap:10px}
+.post-feature h3{font-size:28px;line-height:34px}
+.post-feature p{margin:0;color:var(--text-muted)}
+.post-list{display:flex;flex-direction:column;gap:16px}
+.post-row{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);padding:12px;text-decoration:none;color:var(--text-body);transition:transform .15s,box-shadow .15s;flex:1}
+.post-row .pic{aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:var(--surface-soft)}
+.post-row .pic img{width:100%;height:100%;object-fit:cover}
+.post-row h3{font-size:19px;line-height:25px;margin:6px 0}
+.post-row p{margin:0;color:var(--text-muted);font-size:15px;line-height:23px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font:500 13px/18px var(--font-sans);color:var(--text-muted);font-variant-numeric:lining-nums}
+/* 6. about teaser */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.about-grid .ph{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/5;background:var(--surface-soft)}
+.about-grid .ph img{width:100%;height:100%;object-fit:cover;object-position:62% 50%}
+.about-grid h2{margin-bottom:16px}
+.about-grid .prose p{font-size:19px;line-height:31px}
+.now{background:var(--note-bg);border-radius:var(--radius-lg);padding:20px 24px;margin:24px 0 28px}
+.now .label{font:600 12px/16px var(--font-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--note-fg);margin-bottom:6px}
+.now p{margin:0}
+/* 6. substack band */
+.band .inner{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}
+.band .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+/* footer */
+@media (max-width:900px){
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+  .portrait{max-width:420px}
+  .portrait .note{left:16px;bottom:16px}
+  .doors{grid-template-columns:1fr 1fr}
+  .projects,.posts{grid-template-columns:1fr}
+  .books{gap:16px}
+  .book h3{font-size:14px;line-height:19px;left:12px;right:12px;bottom:12px}
+  .book .tag{top:10px;left:10px;font-size:11px;padding:3px 8px}
+  .band .inner{grid-template-columns:1fr}
+  .band .actions{justify-content:flex-start}
+  .about-grid .ph{max-width:420px;aspect-ratio:1/1}
+}
+@media (max-width:720px){
+  .hero{padding:48px 0 var(--space-12)}
+  .art .t{font-size:24px}
+}
+@media (max-width:620px){
+  .doors{grid-template-columns:1fr}
+  .books{grid-template-columns:1fr;gap:16px}
+  .book{aspect-ratio:4/3}
+  .book h3{font-size:16px;line-height:22px}
+  .post-row{grid-template-columns:96px 1fr;gap:14px}
+  .post-row p{display:none}
+  .post-feature h3{font-size:24px;line-height:30px}
+}
+@media (prefers-reduced-motion: reduce){
+  .door,.project,.book,.post-feature,.post-row{transition:none}
+  .door:hover,.project:hover,.book:hover,.post-feature:hover,.post-row:hover{transform:none}
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html"><img src="anh/logo.png" alt="" width="32" height="32">Minh Fam</a>
+    <nav class="nav" aria-label="Chính">
+      <a href="index.html" aria-current="page">Trang chủ</a>
+      <a href="du-an.html">Dự án</a>
+      <a href="thu-vien.html">Thư viện</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">Về Minh</a>
+    </nav>
+    <div class="tools">
+      <button class="icon-btn" id="theme" type="button" aria-label="Giao diện tối" aria-pressed="false">
+        <svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. Hero: chào hỏi + 2 nút dẫn đường -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Learn in Public</p>
+      <h1>Học công khai,<br>sống <em>chậm rãi</em>.</h1>
+      <p class="lead">Chào bạn, mình là Minh Fam. Đây là góc nhỏ để mình gom lại những ghi chép đúc kết từ sách vở, mấy công cụ tự mày mò làm ra và những sở thích giúp mình cân bằng cuộc sống.</p>
+      <div class="chips">
+        <span class="chip">Bạch Dương × INFP</span>
+        <span class="chip ghost">Solopreneur</span>
+        <span class="chip ghost">Virtual Assistant (đang chuyển hướng)</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href="du-an.html">Xem dự án cá nhân</a>
+        <a class="btn secondary" href="thu-vien.html">Vào thư viện</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="ph"><img src="anh/lam-viec-sofa-tach-nen.png" alt="Minh đeo tai nghe, ngồi xếp bằng với laptop, mỉm cười nhìn vào máy ảnh" width="821" height="1000"></div>
+      <div class="note"><b>Tò mò không đổi</b>Dù ở tuổi nào, vẫn thích mày mò cái mới.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Dự án nổi bật (vẽ từ PROJECTS trong noi-dung.js) -->
+<section class="alt" id="du-an">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Dự án cá nhân</p>
+        <h2>Hiểu trước, thực hành sau</h2>
+        <p>Hai dự án cùng xoay quanh một câu hỏi: làm sao để thấy mình đủ giá trị mà không phải chứng minh gì cả.</p>
+      </div>
+      <a class="more" href="du-an.html">Tất cả dự án <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="projects" id="ds-du-an"></div>
+  </div>
+</section>
+
+<!-- 4. Thư viện (vẽ từ BOOKS trong noi-dung.js) -->
+<section id="thu-vien">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Thư viện</p>
+        <h2>Những chiếc mỏ neo</h2>
+        <p>Kiến thức mình gom góp trong quá trình tự phát triển bản thân, những thứ đã giúp mình vực dậy sau những giai đoạn trì trệ. Mong nó đến với bạn đúng lúc bạn cần.</p>
+      </div>
+      <a class="more" href="thu-vien.html">Cả thư viện <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="books" id="ds-sach"></div>
+    <p class="soon-note" id="sap-co" hidden></p>
+  </div>
+</section>
+
+<!-- 5. Blog (vẽ từ POSTS trong noi-dung.js) -->
+<section class="alt" id="blog">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Blog</p>
+        <h2>Ghi chép mới</h2>
+        <p>Những điều mình đang đọc, đang học và đang nghĩ. Viết ra để hiểu rõ hơn, và để chia sẻ.</p>
+      </div>
+      <a class="more" href="blog.html">Tất cả bài viết <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="posts" id="ds-bai"></div>
+  </div>
+</section>
+
+<noscript><div class="container" style="padding-bottom:48px"><p>Bật JavaScript để xem danh sách mới nhất, hoặc vào thẳng <a href="du-an.html">Dự án</a>, <a href="thu-vien.html">Thư viện</a>, <a href="blog.html">Blog</a>.</p></div></noscript>
+
+<!-- 6. Về Minh (tóm tắt) -->
+<section id="ve-minh">
+  <div class="container about-grid">
+    <div class="ph"><img src="anh/mo-dau-ca-phe.jpg" alt="Minh ngồi giữa khu vườn xanh, tay cầm tách cà phê" loading="lazy" width="733" height="1100"></div>
+    <div class="prose">
+      <p class="eyebrow">Về Minh</p>
+      <h2>Một người vừa chạm ngõ 4x, vẫn tò mò như ngày đầu</h2>
+      <p>Đã có một khoảng thời gian mình mang nhiều hoài nghi về giá trị bản thân. Trên hành trình tự đối thoại, mình vỡ ra được nhiều điều hay ho, và muốn viết xuống, biết đâu có ai đó đang loay hoay giống mình ngày trước.</p>
+      <div class="now">
+        <div class="label">Hiện tại</div>
+        <p>Song song công việc full-time, mình đang từng bước học để chuyển sang làm Trợ lý từ xa (Virtual Assistant), hướng tới một nhịp sống chậm và bình yên hơn ở quê.</p>
+      </div>
+      <a class="btn secondary" href="about.html">Đọc thêm về Minh</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Substack -->
+<section class="band" id="ket-noi">
+  <div class="container inner">
+    <div>
+      <p class="eyebrow">Đi cùng nhau</p>
+      <h2>Nhận bài mới qua Substack</h2>
+      <p>Mình viết lại những gì đang học, đang đọc và đang thử. Nếu bạn cũng đang trên hành trình của riêng mình, ghé đọc và đăng ký nhé.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="https://minhfam.substack.com/" target="_blank" rel="noopener">Đọc trên Substack</a>
+      <a class="btn secondary" href="mailto:hongminh.fam@gmail.com">Gửi email</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <nav class="fnav" aria-label="Chân trang">
+        <a href="du-an.html">Dự án cá nhân</a>
+        <a href="thu-vien.html">Thư viện</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">Về Minh</a>
+      </nav>
+      <div class="socials">
+        <a href="https://web.facebook.com/profile.php?id=61596318492128" target="_blank" rel="noopener" aria-label="Facebook của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+        </a>
+        <a href="https://minhfam.substack.com/" target="_blank" rel="noopener" aria-label="Substack của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.5 4h15v2.2h-15zM4.5 8.2h15v2.2h-15zM4.5 12.4h15V21l-7.5-4.2L4.5 21z"/></svg>
+        </a>
+        <!-- TODO: thay # bằng link Instagram của Minh -->
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram của Minh Fam">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+    <p class="copy">© Minh Fam · Learn in Public</p>
+  </div>
+</footer>
+
+<script src="noi-dung.js"></script>
+<script>
+/* Vẽ trang chủ từ noi-dung.js: thêm nội dung ở đó là trang chủ tự cập nhật */
+(function(){
+  var E=MF.esc;
+  function $(id){return document.getElementById(id)}
+
+  var doc=BOOKS.filter(function(b){return b.status==="doc-ngay"});
+  var soon=BOOKS.filter(function(b){return b.status==="sap-co"});
+
+  /* dự án nổi bật */
+  var pj=PROJECTS.filter(function(p){return p.noibat!==false}).slice(0,2);
+  $("ds-du-an").innerHTML=pj.map(function(p){
+    var ext=p.ngoai?' target="_blank" rel="noopener"':'';
+    var chips=(p.chips||[]).map(function(c,i){return '<span class="chip'+(i?' ghost':'')+'">'+E(c)+'</span>'}).join("");
+    return '<a class="project" href="'+E(p.link)+'"'+ext+'>'+
+      '<div class="art" style="--c1:'+E(p.c1)+';--c2:'+E(p.c2)+'"><span class="tag">'+E(p.nhan)+'</span>'+
+      '<span><span class="t">'+E(p.bia)+'</span><div class="a">'+E(p.phu)+'</div></span></div>'+
+      '<div class="body"><div class="chips">'+chips+'</div><h3>'+E(p.ten)+'</h3><p>'+E(p.mota)+'</p>'+
+      '<span class="go">'+E(p.cta)+' '+(p.ngoai?MF.ext+'<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">(mở tab mới)</span>':MF.arrow)+'</span></div></a>';
+  }).join("");
+
+  /* sách: luôn 3 cuốn đọc được mới nhất (cuốn thêm sau cùng hiện trước) */
+  var pick=doc.slice().reverse().slice(0,3);
+  $("ds-sach").innerHTML=pick.map(function(b){
+    var bg=' style="background:linear-gradient(135deg,'+E(b.c1||"#17301d")+','+E(b.c2||"#4a9b60")+')"';
+    var img=b.anh?'<img src="'+E(b.anh)+'" alt="" loading="lazy" style="object-position:'+E(b.vitri||"50% 30%")+'">':'';
+    return '<a class="book" href="'+E(b.link)+'"'+bg+'>'+img+'<span class="tag">'+E(b.chude)+'</span><h3>'+E(b.ten)+'</h3></a>';
+  }).join("");
+  if(soon.length){
+    var n=$("sap-co");n.hidden=false;
+    n.innerHTML='<b>Sắp có:</b> '+soon.map(function(b){return E(b.ten)}).join(", ")+'.';
+  }
+
+  /* blog: 1 bài nổi bật + 3 bài mới nhất còn lại (tổng 4 bài) */
+  var ps=MF.postsMoiNhat();
+  if(!ps.length){$("blog").hidden=true;return}
+  var feat=ps.filter(function(p){return p.noibat})[0]||ps[0];
+  var rest=ps.filter(function(p){return p!==feat}).slice(0,3);
+  var tags=(feat.chude||[]).map(function(c,i){return '<span class="chip'+(i?' ghost':'')+'">'+E(c)+'</span>'}).join("");
+  var html='<a class="post-feature" href="'+E(feat.link)+'"><div class="pic"><img src="'+E(feat.anh)+'" alt="" loading="lazy"></div>'+
+    '<div class="body"><div class="chips">'+tags+'</div><h3>'+E(feat.ten)+'</h3><p>'+E(feat.tomtat)+'</p>'+
+    '<div class="meta"><span>'+MF.ngay(feat.ngay,true)+'</span><span>'+feat.phut+' phút đọc</span></div></div></a>';
+  if(rest.length){
+    html+='<div class="post-list">'+rest.map(function(p){
+      return '<a class="post-row" href="'+E(p.link)+'"><div class="pic"><img src="'+E(p.anh)+'" alt="" loading="lazy"></div><div>'+
+        '<div class="meta"><span>'+E((p.chude||[""])[0])+'</span><span>'+MF.ngay(p.ngay,true)+'</span><span>'+p.phut+' phút đọc</span></div>'+
+        '<h3>'+E(p.ten)+'</h3><p>'+E(p.tomtat)+'</p></div></a>';
+    }).join("")+'</div>';
+  }
+  $("ds-bai").innerHTML=html;
+  if(!rest.length)$("ds-bai").style.gridTemplateColumns="1fr";
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement,btn=document.getElementById('theme');
+  var mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':!!(mq&&mq.matches)}
+  function sync(){btn.setAttribute('aria-pressed',isDark()?'true':'false')}
+  sync();
+  if(mq&&mq.addEventListener)mq.addEventListener('change',sync);
+  btn.addEventListener('click',function(){
+    var n=isDark()?'light':'dark';
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n)}catch(e){}
+    sync();
+  });
+})();
+</script>
+</body>
+</html>

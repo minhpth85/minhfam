@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Mountain Is You · Đọc sách · Minh Fam</title>
+<meta name="description" content="Trang đọc ebook: ghi chú đọc The Mountain Is You, thiết kế để đọc liền mạch, ít xao nhãng.">
+<link rel="icon" type="image/png" href="anh/logo.png">
+<link rel="apple-touch-icon" href="anh/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+try{var s=JSON.parse(localStorage.getItem('reader')||'{}');var d=document.documentElement;
+if(s.theme)d.setAttribute('data-theme',s.theme);}catch(e){}
+</script>
+<style>
+:root{
+  /* Minh Fam design system (xem site/minhfam.css). Tên biến rút gọn cho trang đọc. */
+  --bg:#fbfaf5; --panel:#ffffff; --text:#1f2a22; --strong:#171c18; --muted:#505e4f;
+  --line:#e1eae5; --brand:#32854d; --brand-strong:#317345; --on-brand:#ffffff; --chip:#ebf6ee; --note:#ebf6ee; --note-fg:#317345;
+  --rule:#4a9b60; --hl:#f6e3a4; --bar:rgba(251,250,245,.92);
+  --fh:"Work Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --fb:"Spectral",Georgia,"Times New Roman",serif;
+  --fs:19px; --lh:1.63; --measure:680px; --ff:var(--fb);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme]){
+  --bg:#0f1a12; --panel:#18291c; --text:#cbd5cc; --strong:#eef3ee; --muted:#9aa89b;
+  --line:#2a3d2e; --brand:#4fb06c; --brand-strong:#6cc487; --on-brand:#0f1a12; --chip:#1f3a26; --note:#1f3a26; --note-fg:#6cc487; --rule:#6cc487; --hl:#5b4a1a; --bar:rgba(15,26,18,.92); color-scheme:dark}}
+:root[data-theme="sepia"]{
+  --bg:#f4ecd8; --on-brand:#fbf5e4; --rule:#7a5c2e;  --panel:#fbf5e4; --text:#3b3226; --strong:#2a2218; --muted:#6b5d49;
+  --line:#e0d4b8; --brand:#7a5c2e; --brand-strong:#6a4e24; --chip:#ece0c2; --note:#efe2bf; --note-fg:#7a5c2e; --hl:#e8d08a; --bar:rgba(244,236,216,.92)}
+:root[data-theme="dark"]{
+  --bg:#0f1a12; --panel:#18291c; --text:#cbd5cc; --strong:#eef3ee; --muted:#9aa89b;
+  --line:#2a3d2e; --brand:#4fb06c; --brand-strong:#6cc487; --on-brand:#0f1a12; --chip:#1f3a26; --note:#1f3a26; --note-fg:#6cc487; --rule:#6cc487; --hl:#5b4a1a; --bar:rgba(15,26,18,.92); color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--fb);-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rule);outline-offset:2px}
+
+/* thanh tiến độ */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--brand);z-index:50}
+
+/* thanh công cụ: cố định ở trên cùng khi cuộn */
+.bar{position:fixed;top:0;left:0;right:0;z-index:40;height:56px;background:var(--bar);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;transition:transform .25s}
+.bar.hide{transform:translateY(-100%)}
+.bar .l,.bar .r{display:flex;align-items:center;gap:6px}
+.bar .t{font:600 14px/20px var(--fh);color:var(--muted);max-width:40vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ib{height:40px;min-width:40px;padding:0 10px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;font:600 14px var(--fh);color:var(--muted);text-decoration:none}
+.ib:hover{border-color:var(--line);color:var(--strong)}
+
+/* bài đọc */
+main{padding:96px 20px 40px}
+article{max-width:var(--measure);margin:0 auto;font-family:var(--ff);font-size:var(--fs);line-height:var(--lh);hyphens:manual}
+.kicker{font:600 12px/16px var(--fh);letter-spacing:.08em;text-transform:uppercase;color:var(--brand-strong);margin:0 0 14px}
+article h1{font:600 clamp(32px,6vw,44px)/1.14 var(--fb);letter-spacing:-.015em;color:var(--strong);margin:0 0 28px}
+article h2{font:600 1.35em/1.25 var(--fb);letter-spacing:-.01em;color:var(--strong);margin:2.2em 0 .6em}
+article p{margin:0 0 1.2em}
+article p.first::first-letter{font:600 3.4em/.9 var(--fb);float:left;margin:.08em .12em 0 0;color:var(--brand-strong)}
+article blockquote{margin:1.8em 0;padding:0 0 0 24px;border-left:3px solid var(--rule);font:italic 400 1.3em/1.4 var(--fb);color:var(--strong)}
+article .note{margin:1.8em 0;padding:1.1em 1.3em;background:var(--note);border-radius:20px;font-size:.88em;line-height:1.6}
+article .note b{display:block;font:600 .78em/1 var(--fh);letter-spacing:.08em;text-transform:uppercase;color:var(--note-fg);margin-bottom:.5em}
+article ul{padding-left:1.2em;margin:0 0 1.2em}
+article li{margin-bottom:.5em}
+article figure{margin:2em 0;text-align:center}
+article figure img{width:100%;height:auto;border-radius:20px;box-shadow:0 1px 2px rgba(23,48,29,.06)}
+article figure.wide{margin-left:calc(50% - min(50vw - 20px, 24rem));margin-right:calc(50% - min(50vw - 20px, 24rem))}
+article figcaption{margin-top:.7em;font:500 .7em/1.5 var(--fh);color:var(--muted)}
+article hr{border:0;text-align:center;margin:2.2em 0;color:var(--muted)}
+article hr::before{content:"· · ·";letter-spacing:.6em}
+
+/* cuối chương */
+.pager{max-width:var(--measure);margin:56px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pager a{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:20px;background:var(--panel);text-decoration:none;color:var(--text);font-family:var(--fh)}
+.pager a:hover{border-color:var(--brand)}
+.pager small{display:block;font:600 11px/16px var(--fh);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pager strong{display:block;font:600 17px/24px var(--fb);color:var(--strong)}
+.pager .next{text-align:right;grid-column:2}
+.pager .prev{grid-column:1}
+.end{max-width:var(--measure);margin:24px auto 0;text-align:center;font:500 14px/20px var(--fh);color:var(--muted)}
+
+/* ngăn mục lục / cài đặt */
+.scrim{position:fixed;inset:0;background:rgba(15,26,18,.4);z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:70;background:var(--panel);border:1px solid var(--line);box-shadow:0 12px 40px rgba(23,48,29,.18);transition:transform .25s;font-family:var(--fh)}
+#toc{top:0;bottom:0;left:0;width:min(360px,88vw);transform:translateX(-102%);overflow:auto;padding:20px;border-radius:0 20px 20px 0}
+#toc.on{transform:none}
+#set{top:64px;right:12px;width:min(340px,calc(100vw - 24px));padding:20px;border-radius:20px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+#set.on{transform:none;opacity:1;pointer-events:auto}
+.sheet h3{margin:0 0 14px;font:600 23px/30px var(--fb);color:var(--strong)}
+.toc-book{font:600 12px/16px var(--fh);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+#toc ol{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:4px}
+#toc a{display:flex;gap:12px;align-items:baseline;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--text);font:500 15px/22px var(--fh)}
+#toc a span{flex:none;width:22px;color:var(--muted);font-weight:600}
+#toc a:hover{background:var(--chip)}
+#toc a[aria-current="true"]{background:var(--chip);color:var(--brand-strong);font-weight:600}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.row>label,.row>span{font:600 13px/18px var(--fh);color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:8px 12px;cursor:pointer;font:600 13px var(--fh);color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--chip);color:var(--brand-strong)}
+.themes{display:flex;gap:8px}
+.themes button{width:36px;height:36px;border-radius:50%;border:2px solid var(--line);cursor:pointer}
+.themes button[aria-pressed="true"]{border-color:var(--brand)}
+
+@media (max-width:640px){
+  :root{--fs:19px}
+  main{padding:88px 18px 32px}
+  .pager{grid-template-columns:1fr}.pager .next,.pager .prev{grid-column:1}.pager .next{text-align:left}
+  .bar .t{display:none}
+}
+@media print{.bar,#prog,.pager,.scrim,.sheet{display:none}main{padding:0}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="prog" role="progressbar" aria-label="Tiến độ đọc" aria-valuemin="0" aria-valuemax="100"></div>
+
+<div class="bar" id="bar">
+  <div class="l">
+    <a class="ib" href="thu-vien.html" aria-label="Về Thư viện">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <button class="ib" id="openToc" type="button" aria-label="Mở mục lục" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <span>Mục lục</span>
+    </button>
+  </div>
+  <div class="t" id="barTitle"></div>
+  <div class="r">
+    <span class="ib" id="pct" style="cursor:default;border-color:transparent">0%</span>
+    <button class="ib" id="openSet" type="button" aria-label="Tùy chỉnh chữ và nền" aria-expanded="false">
+      <span style="font-family:var(--fb);font-weight:600;font-size:17px">Aa</span>
+    </button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<nav class="sheet" id="toc" aria-label="Mục lục" aria-hidden="true">
+  <div class="toc-book">The Mountain Is You</div>
+  <h3>Mục lục</h3>
+  <ol id="tocList"></ol>
+</nav>
+
+<div class="sheet" id="set" role="dialog" aria-label="Tùy chỉnh đọc" aria-hidden="true">
+  <h3>Tùy chỉnh đọc</h3>
+  <div class="row"><span>Cỡ chữ</span>
+    <div class="seg"><button type="button" id="fsDown" aria-label="Giảm cỡ chữ">A−</button><button type="button" id="fsUp" aria-label="Tăng cỡ chữ">A+</button></div></div>
+  <div class="row"><span>Độ rộng dòng</span>
+    <div class="seg" id="wSeg"><button type="button" data-v="600">Hẹp</button><button type="button" data-v="680">Vừa</button><button type="button" data-v="760">Rộng</button></div></div>
+  <div class="row"><span>Giãn dòng</span>
+    <div class="seg" id="lhSeg"><button type="button" data-v="1.5">Chặt</button><button type="button" data-v="1.63">Vừa</button><button type="button" data-v="1.85">Thoáng</button></div></div>
+  <div class="row" style="margin-bottom:0"><span>Nền</span>
+    <div class="themes" id="thSeg">
+      <button type="button" data-v="light" aria-label="Nền sáng" style="background:#fbfaf5"></button>
+      <button type="button" data-v="sepia" aria-label="Nền giấy ngả vàng" style="background:#f4ecd8"></button>
+      <button type="button" data-v="dark" aria-label="Nền tối" style="background:#0f1a12"></button>
+    </div></div>
+</div>
+
+<main>
+  <article id="page" tabindex="-1"></article>
+  <div class="pager" id="pager"></div>
+  <p class="end" id="end"></p>
+</main>
+
+<script>
+/* ===== NỘI DUNG SÁCH — sửa mảng này để đổi chương =====
+   body là HTML đơn giản: <p>, <h2>, <blockquote>, <ul>, <hr>, <div class="note"><b>Nhãn</b>…</div>
+   Đây là bản ghi chú đọc viết bằng lời mới, không phải nguyên văn sách. */
+var BOOK={title:"The Mountain Is You",author:"Ghi chú đọc của Minh Fam"};
+var CH=[
+{t:"Lời mở đầu: Vì sao bạn cứ vấp ở cùng một chỗ",body:
+'<p class="first">Có những người làm gì cũng đúng cách, vậy mà đến gần đích lại khựng. Họ lên kế hoạch, đọc sách, nghe podcast, rồi một buổi sáng nào đó mọi thứ lặng lẽ tan đi. Họ tự trách mình lười, thiếu kỷ luật, thiếu ý chí.</p>'+
+'<p>Cuốn sách này đặt ra một cách nhìn khác: nhiều khi điều cản đường không phải sự lười biếng, mà là một phần trong ta đang cố bảo vệ ta. Phần đó không ghét bỏ bạn. Nó chỉ đang làm việc theo cách nó biết, bằng những luật cũ.</p>'+
+'<blockquote>Nếu hành vi nào đó lặp đi lặp lại, hãy hỏi nó đang bảo vệ mình khỏi điều gì, thay vì hỏi vì sao mình kém cỏi.</blockquote>'+
+'<p>Ngọn núi trong tên sách chính là hình ảnh đó. Thứ ta phải leo qua không nằm ngoài kia, mà nằm trong cách ta nghĩ, cảm và phản ứng. Vì thế, việc đầu tiên không phải là cố gắng hơn, mà là nhìn rõ hơn.</p>'+
+'<div class="note"><b>Về bản đọc này</b>Đây là ghi chú đọc viết lại bằng lời của mình để làm mẫu trang đọc. Muốn có bản đầy đủ, hãy đọc sách gốc của tác giả.</div>'},
+
+{t:"Tự phá hoại là một cách tự vệ",body:
+'<p>Tự phá hoại thường được hiểu là ta muốn mình thất bại. Thực ra gần như ngược lại: ta đang cố giữ mình ở nơi quen thuộc, vì quen thuộc nghĩa là an toàn, dù nó không dễ chịu.</p>'+
+'<p>Thay đổi, dù theo hướng tốt, vẫn đòi ta bước vào vùng chưa biết. Cơ thể và cảm xúc đọc điều đó là rủi ro. Nên ngay khi sắp tiến lên, một phần trong ta kéo lại: trì hoãn, tìm lý do, làm hỏng việc vào phút cuối.</p>'+
+'<h2>Vài dấu hiệu dễ gặp</h2>'+
+'<ul><li>Bắt đầu rất hăng, rồi bỏ khi sắp thấy kết quả.</li><li>Tìm ra lỗi trong những thứ đang tốt đẹp.</li><li>Chờ đến khi sẵn sàng hoàn toàn mới làm.</li><li>Quay lại những thói quen hoặc mối quan hệ đã biết là không hợp.</li></ul>'+
+'<p>Không dấu hiệu nào trong số này là bản án. Chúng chỉ là thông tin cho thấy nỗi sợ đang nằm ở đâu.</p>'},
+
+{t:"Nhu cầu chưa được đáp ứng",body:
+'<p>Phía sau mỗi thói quen khó bỏ thường có một nhu cầu thật: được an ủi, được thuộc về, được cảm thấy mình đủ. Khi nhu cầu đó không được đáp ứng bằng cách lành mạnh, ta tìm đường khác, và đường khác thường để lại hậu quả.</p>'+
+'<p>Vì thế, bỏ thói quen thường thất bại nếu ta chỉ cấm. Câu hỏi tốt hơn là: thói quen này đang cho mình cảm giác gì, và còn cách nào cho mình cảm giác đó mà không phải trả giá?</p>'+
+'<div class="note"><b>Thử ngay</b>Chọn một thói quen bạn muốn thay đổi. Viết ra ba dòng: tôi làm điều này khi nào, nó giúp tôi tránh cảm giác nào, và một cách nhỏ hơn, lành hơn để có cảm giác đó là gì.</div>'},
+
+{t:"Ở yên với cảm xúc khó chịu",body:
+'<p>Phần lớn thời gian, ta không sợ sự việc, ta sợ cảm giác đi kèm nó. Nên ta làm mọi thứ để né: lướt điện thoại, làm việc quá sức, nói chuyện khác đi.</p>'+
+'<p>Một kỹ năng đơn giản mà khó: ngồi lại với cảm xúc vài phút, gọi tên nó, và để nó đi qua mà không phải làm gì ngay. Cảm xúc có đầu có đuôi. Khi ta ngừng chạy, nó thường nhẹ hơn ta tưởng.</p>'+
+'<hr>'+
+'<p>Không cần làm hoàn hảo. Chỉ cần lần sau, trước khi phản ứng quen thuộc, ta chậm lại một nhịp. Một nhịp đó là khoảng trống để chọn khác đi.</p>'},
+
+{t:"Chọn người mình muốn trở thành",body:
+'<p>Khi nhìn rõ các luật cũ, ta có thể bắt đầu viết luật mới. Không phải bằng một quyết tâm lớn, mà bằng những lựa chọn nhỏ lặp lại, mỗi lựa chọn là một phiếu bầu cho kiểu người ta muốn trở thành.</p>'+
+'<p>Ngọn núi không biến mất. Nhưng ta nhìn nó khác đi: không còn là kẻ thù, mà là con đường. Mỗi lần leo là một lần hiểu mình hơn, và người lên đến đỉnh không còn là người đã bắt đầu.</p>'+
+'<blockquote>Bạn không cần thắng ngọn núi. Bạn chỉ cần thôi chống lại chính mình trên đường đi.</blockquote>'+
+'<div class="note"><b>Gợi ý đọc tiếp</b>Đọc lại từng chương chậm rãi, ghi một câu bạn muốn nhớ vào sổ, rồi chọn một việc nhỏ để làm trong tuần này.</div>'}
+];
+/* ====================================================== */
+
+var $=function(i){return document.getElementById(i)};
+var root=document.documentElement;
+var S={ch:0,fs:19,lh:1.63,w:680,theme:null};
+var KEY="reader:mountain";
+try{var sv=JSON.parse(localStorage.getItem("reader")||"{}");for(var k in sv)if(k in S)S[k]=sv[k];
+if([600,680,760].indexOf(S.w)<0)S.w=680;if([1.5,1.63,1.85].indexOf(S.lh)<0)S.lh=1.63;
+var pos=JSON.parse(localStorage.getItem(KEY)||"{}");if(typeof pos.ch==="number"&&pos.ch<CH.length)S.ch=pos.ch;var savedY=pos.y||0}catch(e){var savedY=0}
+if(location.hash){var h=parseInt(location.hash.slice(3),10);if(h>0&&h<=CH.length){S.ch=h-1;savedY=0}}
+
+function save(){try{localStorage.setItem("reader",JSON.stringify({fs:S.fs,lh:S.lh,w:S.w,theme:S.theme}))}catch(e){}}
+function applyPrefs(){
+  root.style.setProperty("--fs",S.fs+"px");root.style.setProperty("--lh",S.lh);
+  root.style.setProperty("--measure",S.w+"px");
+  if(S.theme)root.setAttribute("data-theme",S.theme);
+  [["wSeg",String(S.w)],["lhSeg",String(S.lh)],["thSeg",S.theme||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")]].forEach(function(p){
+    [].forEach.call($(p[0]).querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",b.getAttribute("data-v")===p[1])});
+  });
+}
+
+function render(y){
+  var c=CH[S.ch];
+  $("page").innerHTML='<p class="kicker">Chương '+(S.ch+1)+' / '+CH.length+'</p><h1>'+c.t+'</h1>'+c.body;
+  $("barTitle").textContent=BOOK.title;
+  document.title=c.t+" · "+BOOK.title;
+  $("pager").innerHTML=
+    (S.ch>0?'<a class="prev" href="#ch'+S.ch+'" data-go="'+(S.ch-1)+'"><small>← Chương trước</small><strong>'+CH[S.ch-1].t+'</strong></a>':'')+
+    (S.ch<CH.length-1?'<a class="next" href="#ch'+(S.ch+2)+'" data-go="'+(S.ch+1)+'"><small>Chương sau →</small><strong>'+CH[S.ch+1].t+'</strong></a>':'');
+  $("end").textContent=S.ch===CH.length-1?"Hết bản đọc mẫu. Cảm ơn bạn đã đọc.":"";
+  [].forEach.call($("tocList").querySelectorAll("a"),function(a,i){if(i===S.ch)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current")});
+  window.scrollTo(0,y||0);progress();
+}
+function go(i){if(i<0||i>=CH.length)return;S.ch=i;history.replaceState(null,"","#ch"+(i+1));render(0);closeAll();$("page").focus({preventScroll:true})}
+
+function progress(){
+  var h=document.documentElement.scrollHeight-innerHeight;
+  var p=h>0?Math.min(100,Math.max(0,scrollY/h*100)):100;
+  var total=(S.ch+p/100)/CH.length*100;
+  $("prog").style.width=p+"%";$("prog").setAttribute("aria-valuenow",Math.round(p));
+  $("pct").textContent=Math.round(total)+"%";
+}
+var lastY=0,tick;
+addEventListener("scroll",function(){
+  progress();
+  clearTimeout(tick);tick=setTimeout(function(){try{localStorage.setItem(KEY,JSON.stringify({ch:S.ch,y:Math.round(scrollY)}))}catch(e){}},300);
+},{passive:true});
+
+/* mục lục */
+$("tocList").innerHTML=CH.map(function(c,i){return '<li><a href="#ch'+(i+1)+'" data-go="'+i+'"><span>'+(i+1)+'</span>'+c.t+'</a></li>'}).join("");
+document.addEventListener("click",function(e){var a=e.target.closest("[data-go]");if(a){e.preventDefault();go(+a.getAttribute("data-go"))}});
+
+function closeAll(){["toc","set"].forEach(function(i){$(i).classList.remove("on");$(i).setAttribute("aria-hidden","true")});$("scrim").classList.remove("on");$("openToc").setAttribute("aria-expanded","false");$("openSet").setAttribute("aria-expanded","false")}
+function open(id,btn,scrim){var on=$(id).classList.contains("on");closeAll();if(!on){$(id).classList.add("on");$(id).setAttribute("aria-hidden","false");$(btn).setAttribute("aria-expanded","true");if(scrim)$("scrim").classList.add("on")}}
+$("openToc").onclick=function(){open("toc","openToc",true)};
+$("openSet").onclick=function(){open("set","openSet",false)};
+$("scrim").onclick=closeAll;
+
+/* tùy chỉnh */
+$("fsUp").onclick=function(){S.fs=Math.min(30,S.fs+1);save();applyPrefs()};
+$("fsDown").onclick=function(){S.fs=Math.max(15,S.fs-1);save();applyPrefs()};
+function seg(id,key,num){$(id).addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var v=b.getAttribute("data-v");S[key]=num?parseFloat(v):v;save();applyPrefs()})}
+seg("wSeg","w",true);seg("lhSeg","lh",true);seg("thSeg","theme");
+
+/* phím tắt: ←/→ chương, T mục lục, Esc đóng */
+addEventListener("keydown",function(e){
+  if(e.target.closest("input,textarea")||e.metaKey||e.ctrlKey||e.altKey)return;
+  if(e.key==="Escape")closeAll();
+  else if(e.key==="ArrowRight"&&S.ch<CH.length-1)go(S.ch+1);
+  else if(e.key==="ArrowLeft"&&S.ch>0)go(S.ch-1);
+  else if(e.key==="t"||e.key==="T")$("openToc").click();
+});
+
+applyPrefs();render(savedY);
+</script>
+</body>
+</html>
