@@ -1,6 +1,6 @@
 ---
 ho-ten: Minh Fam
-chuc-danh: Learn in Public · Solopreneur · Virtual Assistant (đang chuyển hướng)
+chuc-danh: Learn in Public · Solopreneur · Đang tìm việc remote
 cau-gioi-thieu: Một Bạch Dương điển hình kết hợp INFP chính hiệu, tò mò với thế giới, thích mày mò cái mới và chia sẻ quá trình tự học công khai.
 email: hongminh.fam@gmail.com
 lien-ket:
@@ -36,7 +36,7 @@ Trên hành trình dò đường đầy thú vị đó, có hai dự án cá nh�
 - **Giầy hoa nhà Minh:** Nơi mình tự tay thiết kế từng mẫu giày vải hoa thủ công, lo từ khâu sản xuất đến chụp ảnh và gói ghém từng đơn hàng gửi đi. Thực sự đó chỉ là một trải nghiệm kinh doanh nhỏ nhưng dạy mình rất nhiều về sự tỉ mỉ và thấu hiểu khách hàng.
 - **Herbloom Studio:** Góc nhỏ chuyên về thiết kế landing page và xây dựng bộ nhận diện thương hiệu cho các solopreneurs và coaches - nơi mình biến những ý tưởng của khách hàng thành một sự xuất hiện đồng bộ trong các điểm chạm với khách hàng.
 
-Hiện tại, song song với công việc full-time, mình đang ấp ủ và từng bước học tập để chuyển sang con đường **Trợ lý từ xa (Virtual Assistant)**. Mình chọn hướng đi này không chỉ để phát huy thế mạnh về tổ chức, vận hành và thiết kế, mà còn vì mình có một dự định là có thể làm việc hoàn toàn remote để sớm hiện thực hóa kế hoạch chuyển về quê sinh sống, tận hưởng một nhịp sống chậm rãi và bình yên hơn.
+Hiện tại, song song với công việc full-time, mình đang ấp ủ và từng bước học tập để tìm một **công việc remote**. Mình chọn hướng đi này không chỉ để phát huy thế mạnh về tổ chức, vận hành và thiết kế, mà còn vì mình có một dự định là có thể làm việc hoàn toàn từ xa để sớm hiện thực hóa kế hoạch chuyển về quê sinh sống, tận hưởng một nhịp sống chậm rãi và bình yên hơn.
 
 ## Khi không làm việc thì mình làm gì
 
