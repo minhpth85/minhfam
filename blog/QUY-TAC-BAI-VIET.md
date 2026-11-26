@@ -3,7 +3,7 @@
 Áp dụng cho mọi bài mới và khi cập nhật bài cũ. Mẫu chuẩn: `site/toxic-productivity.html` (đối chiếu khi dựng bài mới).
 
 ## 1. Chữ trong bài: một font, một cỡ (quan trọng nhất)
-- **Toàn bộ nội dung bài viết dùng cùng một font (font nội dung của website) và cùng một cỡ chữ, cùng giãn dòng.** Cỡ chữ đặt bằng biến `--body-fs` (18px máy tính, 17px điện thoại) và `--body-lh`.
+- **Toàn bộ nội dung bài viết dùng cùng một font (font nội dung của website) và cùng một cỡ chữ, cùng giãn dòng.** Cỡ chữ đặt bằng biến `--body-fs` (18px máy tính, 18px điện thoại) và `--body-lh`.
 - Gồm: đoạn văn, danh sách, tiêu đề phụ giữa bài (câu hỏi 1/ 2/ 3/), câu trích, ô so sánh, ô kêu gọi (CTA), ô P/s, chú thích ảnh.
 - **Không phân cấp bằng cỡ chữ.** Cần nhấn mạnh thì chỉ dùng **in đậm** hoặc *in nghiêng*:
   - Tiêu đề phụ giữa bài: in đậm.
