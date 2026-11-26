@@ -19,7 +19,7 @@ Mỗi lần làm sách mới, đưa file này cho Claude và nói: "làm sách m
 4. **Aa tùy chỉnh**: cỡ chữ, độ rộng dòng, giãn dòng, nền (sáng / giấy ngả vàng / tối). Lưu lại cho lần sau. **Không có lựa chọn đổi font**: thân bài luôn là Spectral.
 5. **Nhớ chỗ đọc dở**: mở lại đúng chương và vị trí cuộn.
 6. **Cuối chương**: nút chương trước / chương sau. Phím tắt: ←/→ đổi chương, `T` mục lục, `Esc` đóng.
-7. Cột chữ rộng 680px, chữ thân Spectral 19px, dòng cao khoảng 31px (1.63), chữ cái đầu chương to hơn.
+7. Cột chữ rộng 680px, chữ thân Spectral mặc định 21px (20px trên điện thoại), dòng cao 1.63, chữ cái đầu chương to hơn. Nút A−/A+ đổi 2px mỗi lần (15 đến 36px) và hiện cỡ đang dùng ở giữa.
 8. Dùng tốt trên điện thoại, không tràn ngang. Có sẵn kiểu in (ẩn thanh công cụ).
 
 ## 4. Nội dung
