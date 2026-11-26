@@ -1,6 +1,6 @@
 ---
 ho-ten: Minh Fam
-chuc-danh: Learn in Public · Solopreneur · Đang tìm việc remote
+chuc-danh: Learn in Public 
 cau-gioi-thieu: Một Bạch Dương điển hình kết hợp INFP chính hiệu, tò mò với thế giới, thích mày mò cái mới và chia sẻ quá trình tự học công khai.
 email: hongminh.fam@gmail.com
 lien-ket:
