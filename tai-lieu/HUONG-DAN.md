@@ -57,6 +57,6 @@ Lưu ý:
 - Bài mới sinh ra theo khuôn `scripts/mau-bai-viet.html`; bài cần bố cục đặc biệt (ô so sánh, CTA...) thì chỉnh tay trong file HTML sau khi sinh.
 
 ### Sách: vẫn thêm tay
-Mỗi cuốn là một trang HTML riêng nên thêm một dòng vào `BOOKS` trong `site/noi-dung.js` (xuống **cuối**; trang chủ hiện 3 cuốn `doc-ngay` ở cuối, `status:"sap-co"` hiện ở dòng "Sắp có"). Ảnh đặt trong `site/anh/`, ghi đường dẫn dạng `anh/ten-anh.jpg`.
+Mỗi cuốn là một trang HTML riêng nên thêm một dòng vào `BOOKS` trong `site/noi-dung.js` (xuống **cuối**; trang chủ hiện 3 cuốn `doc-ngay` ở cuối, `status:"sap-co"` hiện ở dòng "Sắp có"). Trang Thư viện tự xếp **mới nhất lên đầu** (cuốn `doc-ngay` thêm sau cùng) và gắn nhãn **"Sách mới"** trên bìa cuốn đó; sách `sap-co` xếp sau cùng. Ảnh đặt trong `site/anh/`, ghi đường dẫn dạng `anh/ten-anh.jpg`.
 
 Còn viết tay: trang **Dự án** (`du-an.html`, vì có mô tả chi tiết riêng) và các trang sách.

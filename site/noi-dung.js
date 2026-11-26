@@ -9,7 +9,8 @@
 /* ---------- SÁCH (trang Thư viện) ----------
    status: "doc-ngay" (đã đọc được) hoặc "sap-co" (sắp ra mắt)
    (Sách vẫn thêm tay ở đây vì mỗi cuốn là một trang HTML riêng.)
-   Thêm cuốn mới xuống CUỐI danh sách. Trang chủ lấy 3 cuốn "doc-ngay" ở cuối.
+   Thêm cuốn mới xuống CUỐI danh sách. Cuốn "doc-ngay" ở cuối là sách mới nhất: trang Thư viện luôn xếp
+   mới nhất lên đầu và gắn nhãn "Sách mới" trên bìa; trang chủ lấy 3 cuốn "doc-ngay" ở cuối.
    anh: ảnh bìa (để "" thì dùng bìa màu c1, c2). vitri: vị trí cắt ảnh.   */
 var BOOKS=[
   {id:"mountain",ten:"The Mountain Is You",mota:"Ghi chú đọc về tự phá hoại, nhu cầu chưa được đáp ứng và cách đứng cùng ngọn núi của chính mình.",chude:"Phát triển bản thân",status:"sap-co",link:"the-mountain-is-you.html",anh:"anh/the-mountain-is-you-bia.jpg",chu:false,vitri:"50% 40%",gia:null,giaGoc:null,c1:"#17301d",c2:"#4a9b60",noibat:true},
@@ -56,6 +57,17 @@ var MF={
   esc:function(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})},
   /* "2026-11-23" -> "23/11/2026" (full) hoặc "23/11" */
   ngay:function(iso,full){var p=String(iso).split("-");return p[2]+"/"+p[1]+(full?"/"+p[0]:"")},
+  /* sách: cuốn thêm SAU CÙNG vào BOOKS là mới nhất. Đọc ngay xếp trước (mới nhất lên đầu), sắp có xếp sau */
+  sachSapXep:function(){
+    var doc=BOOKS.filter(function(b){return b.status==="doc-ngay"}).reverse();
+    var soon=BOOKS.filter(function(b){return b.status!=="doc-ngay"}).reverse();
+    return doc.concat(soon);
+  },
+  /* id cuốn đọc được mới nhất: được gắn nhãn "Sách mới" trên bìa ở trang Thư viện */
+  sachMoiId:function(){
+    var doc=BOOKS.filter(function(b){return b.status==="doc-ngay"});
+    return doc.length?doc[doc.length-1].id:null;
+  },
   /* bài mới nhất trước; cùng ngày giữ thứ tự trong danh sách */
   postsMoiNhat:function(){
     return POSTS.map(function(p,i){return{p:p,i:i}}).sort(function(a,b){

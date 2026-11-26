@@ -90,6 +90,8 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 .idea-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .idea-msg{margin:0;font:500 14px/20px var(--font-sans);color:var(--primary-text)}
 .idea-msg.err{color:var(--danger,#c2412f)}
+.badge-new{position:absolute;top:12px;left:12px;z-index:3;background:var(--primary);color:var(--on-primary);font:600 11px/16px var(--font-sans);padding:2px 10px;border-radius:var(--radius-full);box-shadow:0 1px 4px rgba(23,48,29,.3)}
+.combo .stack .cover .badge-new{display:none}
 .badge-soon{position:absolute;top:12px;left:12px;background:rgba(23,48,29,.7);color:var(--green-50);font:600 11px/16px var(--font-sans);padding:2px 10px;border-radius:var(--radius-full);backdrop-filter:blur(4px)}
 .empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--text-muted);background:var(--surface);border:1px dashed var(--border-strong);border-radius:var(--radius-lg)}
 /* combo */
@@ -306,7 +308,7 @@ function cover(b,small){
   var inner=b.anh?'<img src="'+esc(b.anh)+'" alt="'+(b.chu?'':'Bìa ebook '+esc(b.ten))+'" loading="lazy" style="object-position:'+esc(b.vitri||"50% 30%")+'">'+
       (b.chu?'<span></span><span><span class="t">'+esc(b.ten)+'</span></span>':'')
     :'<span></span><span><span class="t">'+esc(b.ten)+'</span></span>';
-  return '<div class="cover'+(b.anh&&b.chu?' photo':'')+'" style="'+st+'"'+(b.anh?'':' role="img" aria-label="Bìa ebook '+esc(b.ten)+'"')+'>'+inner+(b.status==="sap-co"?'<span class="badge-soon">Sắp có</span>':'')+'</div>';
+  return '<div class="cover'+(b.anh&&b.chu?' photo':'')+'" style="'+st+'"'+(b.anh?'':' role="img" aria-label="Bìa ebook '+esc(b.ten)+'"')+'>'+inner+(b.status==="sap-co"?'<span class="badge-soon">Sắp có</span>':(b.id===MF.sachMoiId()?'<span class="badge-new">Sách mới</span>':''))+'</div>';
 }
 
 function priceHtml(o){
@@ -315,8 +317,9 @@ function priceHtml(o){
 }
 
 function renderShelf(){
-  var picks=BOOKS.filter(function(b){return b.noibat}).slice(0,3);
-  if(picks.length<3)picks=BOOKS.slice(0,3);
+  var all=MF.sachSapXep();
+  var picks=all.filter(function(b){return b.noibat}).slice(0,3);
+  if(picks.length<3)picks=all.slice(0,3);
   $("shelf").innerHTML=picks.map(function(b){return cover(b)}).join("");
 }
 
@@ -331,7 +334,7 @@ function renderPills(){
 
 function renderBooks(){
   var q=norm(state.q.trim());
-  var list=BOOKS.filter(function(b){
+  var list=MF.sachSapXep().filter(function(b){
     if(state.f==="combo")return false;
     if(state.f!=="all"&&b.status!==state.f)return false;
     return !q||norm(b.ten+" "+b.mota+" "+b.chude).indexOf(q)>-1;
