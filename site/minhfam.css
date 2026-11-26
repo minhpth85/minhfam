@@ -182,3 +182,4 @@ footer .socials a:hover{background:var(--on-primary);color:var(--primary);border
   .m-panel a[aria-current="page"]{color:var(--primary-text);font-weight:600;background:var(--bg-alt)}
 }
 @media (min-width:721px){.m-panel{display:none!important}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
