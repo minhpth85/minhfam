@@ -33,7 +33,8 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 /* 1. hero */
 .hero{padding:var(--space-24) 0 var(--space-20)}
 .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
-.hero .chips{margin-top:24px}
+.hero .lead{margin-top:0;color:var(--text)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .portrait{position:relative}
 .portrait .ph{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:4/5;background:radial-gradient(90% 70% at 70% 20%,var(--green-300) 0,transparent 70%),var(--surface-soft);display:flex;align-items:flex-end;justify-content:center;padding:40px 16px 0}
@@ -154,14 +155,8 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <p class="eyebrow">Learn in Public</p>
-      <h1>Học công khai,<br>sống <em>chậm rãi</em>.</h1>
+      <h1 class="sr-only">Minh Fam</h1>
       <p class="lead">Xin chào! Đây là một không gian nhỏ để mình lưu giữ và chia sẻ những bài viết cá nhân, kinh nghiệm vibe-coding và các dự án ngẫu hứng của mình.</p>
-      <div class="chips">
-        <span class="chip">Bạch Dương × INFP</span>
-        <span class="chip ghost">Solopreneur</span>
-        <span class="chip ghost">Đang tìm việc remote</span>
-      </div>
       <div class="hero-actions">
         <a class="btn" href="du-an.html">Xem dự án cá nhân</a>
         <a class="btn secondary" href="thu-vien.html">Vào thư viện</a>
@@ -169,7 +164,7 @@ try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.docu
     </div>
     <div class="portrait">
       <div class="ph"><img src="anh/lam-viec-sofa-tach-nen.png" alt="Minh đeo tai nghe, ngồi xếp bằng với laptop, mỉm cười nhìn vào máy ảnh" width="821" height="1000"></div>
-      <div class="note"><b>Tò mò không đổi</b>Dù ở tuổi nào, vẫn thích mày mò cái mới.</div>
+      <div class="note chips"><span class="chip">#BạchDương</span><span class="chip">#INFP</span></div>
     </div>
   </div>
 </section>
